@@ -2,15 +2,14 @@
 [TOC]
 
 # 内存
-# about author
 
-#网络
+# 网络
 参考 2010年 Linux 下网络性能优化方法简析
 https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 【比较古老了，新代码很多已经变化了】
 
-##收包
-###NAPI-newer newer
+## 收包
+### NAPI-newer newer
 核心结构体 napi_struct
 **网卡多接收队列 ** 的时候每个接收队列对应一个napi_struct
 ``` C
@@ -19,7 +18,7 @@ void netif_napi_add(struct net_device *dev, struct napi_struct *napi,
 	list_add(&napi->dev_list, &dev->napi_list);
 	napi->dev = dev;
 ```
-###GRO
+### GRO
 在 napi\_struct对象中，有一个 GRO 的包的列表 gro\_list，用保存收到的包，然后传递给网络协议层，
 比较复杂，以 inet_gro_receive 处理IP报文的合并为例，
 ** 合并条件： /* All fields must match except length and checksum. */ **
@@ -46,13 +45,13 @@ static const struct net_offload tcpv4_offload = {
 
 
 
-###LRO-Large Receive Offload 已被GRO取代
+### LRO-Large Receive Offload 已被GRO取代
 
 
-##发包
-###TSO-TCP Segmentation Offload
+## 发包
+### TSO-TCP Segmentation Offload
 网卡硬件来做TCP的分片
-###GSO-Generic Segmentation Offload
+### GSO-Generic Segmentation Offload
 作用，尽量推迟分片的时间点，从而减少内核处理的报文个数，提升效率
 **体现batching思想**
 相关源代码：
@@ -64,7 +63,7 @@ static inline bool netif_needs_gso(struct sk_buff *skb,
 				   netdev_features_t features)
 ```
 
-##packet_mmap
+## packet_mmap
 
 https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt
 
