@@ -2,6 +2,7 @@
 [TOC]
 
 #内存#
+# about author
 
 #网络
 参考 2010年 Linux 下网络性能优化方法简析
