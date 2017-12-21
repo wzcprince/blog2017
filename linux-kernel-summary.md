@@ -1,5 +1,10 @@
+* auto-gen TOC:
+{:toc}
+
 
 {:toc}
+
+
 [TOC]
 
 # 内存
