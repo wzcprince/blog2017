@@ -17,7 +17,7 @@ https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 ## 收包
 ### NAPI-newer newer
 
-#### __napi_schedule(&adapter->napi) 注意napi代表一个device
+### __napi_schedule(&adapter->napi) 注意napi代表一个device
 
 核心结构体 napi_struct
 **网卡多接收队列 ** 的时候每个接收队列对应一个napi_struct
