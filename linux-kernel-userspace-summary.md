@@ -8,6 +8,15 @@
 
 #### buddy memory allocation scheme
 
+## glibc
+
+## socket API
+### raw socket
+#### PF_INET raw socket
+#### PF_PACKET raw socket
+linux raw socket - CSDN博客
+http://blog.csdn.net/lizhia1221/article/details/51946592
+
 
 # 同步互斥机制
 ## 自旋锁 spin lock
