@@ -28,10 +28,13 @@ http://blog.csdn.net/lizhia1221/article/details/51946592
 
 ### PF_PACKET socket直接操作数据链路层，操作对象是接口/device
 
-使用 PF_PACKET的经典应用 libpcap，netsniﬀ-ng
+Packet sockets are used to receive or send raw packets at the device driver (OSI Layer 2) level.  
+参见 http://man7.org/linux/man-pages/man7/packet.7.html
 
 linux Packet socket (1)简介 - CSDN博客
 http://blog.csdn.net/youfuchen/article/details/29782191
+
+使用 PF_PACKET的经典应用 libpcap，netsniﬀ-ng
 
 #### 创建
 - packet_socket = socket(AF_PACKET, int socket_type, int protocol);
@@ -56,6 +59,16 @@ http://blog.csdn.net/youfuchen/article/details/29782191
 - bind()
 - 结构体 sockaddr_ll
 - if_nametoindex()
+
+### PF_UNIX
+
+参见  http://man7.org/linux/man-pages/man7/unix.7.html  
+sockets for local interprocess communication
+
+### PF_NETLINK
+
+参见 http://man7.org/linux/man-pages/man7/netlink.7.html 
+communication between kernel and user space (AF_NETLINK)
 
 # 同步互斥机制
 ## 自旋锁 spin lock
