@@ -82,6 +82,18 @@ http://larmbr.com/2014/07/26/mcs-spinlock/
 # 内存
 
 # 网络
+
+
+RSS: Receive Side Scaling 网卡硬件实现
+RPS: Receive Packet Steering Google软件
+RFS: Receive Flow Steering
+Accelerated Receive Flow Steering
+XPS: Transmit Packet Steering
+
+参见 
+https://www.kernel.org/doc/Documentation/networking/scaling.txt  
+D:\!learn\code\linux-4.4.82\full\Documentation\networking\scaling.txt
+
 参考 2010年 Linux 下网络性能优化方法简析
 https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 【比较古老了，新代码很多已经变化了】
@@ -119,7 +131,7 @@ void netif_napi_add(struct net_device *dev, struct napi_struct *napi,
 #### 以e1000e为例
 <http://blog.csdn.net/wzcprince/article/details/78895283>
 
-### RPS RFS
+### RPS和RFS（Google补丁）
 Receive Packet Steering 把软中断的负载均衡到各个cpu
 RPS（Receive Packet Steering）主要是把软中断的负载均衡到各个cpu，简单来说，是网卡驱动对每个流生成一个hash标识，这个HASH值得计算可以通过四元组来计算（SIP，SPORT，DIP，DPORT），然后由中断处理的地方根据这个hash标识分配到相应的CPU上去，这样就可以比较充分的发挥多核的能力了。
 由于RPS只是单纯把数据包均衡到不同的cpu，这个时候如果应用程序所在的cpu和软中断处理的cpu不是同一个，此时对于cpu cache的影响会很大，那么RFS（Receive flow steering）确保应用程序处理的cpu跟软中断处理的cpu是同一个，这样就充分利用cpu的cache，这两个补丁往往都是一起设置，来达到最好的优化效果, 主要是针对单队列网卡多CPU环境。
