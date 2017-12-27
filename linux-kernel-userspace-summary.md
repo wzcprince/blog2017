@@ -21,8 +21,14 @@ http://blog.csdn.net/lizhia1221/article/details/51946592
 例如 NQA 收发 ICMP报文  socket(PF_INET,SOCK_RAW,IPPROTO_ICMP)
 - IP_HDRINCL可以自定义IP头
 - IP_TOS IP_TTL
+- 内核相关
+	- raw_local_deliver(skb, protocol);
+		- raw_v4_hashinfo
+		- hash函数就是直接取第八位 哈希桶有256个 拉链法解冲突
 
 ### PF_PACKET socket直接操作数据链路层，操作对象是接口/device
+
+使用 PF_PACKET的经典应用 libpcap，netsniﬀ-ng
 
 linux Packet socket (1)简介 - CSDN博客
 http://blog.csdn.net/youfuchen/article/details/29782191
@@ -32,11 +38,24 @@ http://blog.csdn.net/youfuchen/article/details/29782191
 	- socket_type
 		- SOCK_RAW, 那么我们得到的数据包含所有的L2 header和payload
 		- SOCK_DGRAM, 那么我们收到的数据会去掉L2的header，是IP header和payload
-- protocol 指定抓取的packet类型
-	- ETH_P_IP ETH_P_ARP ETH_P_ALL	
-
+	- protocol 指定抓取的packet类型
+		- ETH_P_IP ETH_P_ARP ETH_P_ALL	
+- 内核对应
+	- packet_create(struct net *net, struct socket *sock,  int protocol,...)
+		
+		- 创建packet_type与ip_packet_type arp_packet_type 平级的！！
+		- 指定packet_type::func为 packet_rcv(struct sk_buff *skb, struct net_device *dev,
+		      struct packet_type *pt, struct net_device *orig_dev)
+		- packet_rcv时 __skb_queue_tail(&sk->sk_receive_queue, skb);
+		       
+	- ptype_all链表里存所有接口的protocol == ETH_P_ALL的packet raw socket
+	- skb->dev->ptype_all 链表里存bind接口的protocol == ETH_P_ALL的packet raw socket
+	- ptype_base[PTYPE_HASH_SIZE == 16] 存protocol == ETH_P_IP/ETH_P_ARP的
+	
 #### 绑定到某个接口/device
- bind()
+- bind()
+- 结构体 sockaddr_ll
+- if_nametoindex()
 
 # 同步互斥机制
 ## 自旋锁 spin lock
