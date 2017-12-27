@@ -17,7 +17,9 @@ https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 ## 收包
 ### NAPI-newer newer
 
-### 中文标点测试1-“”（）、？
+### 中文标点测试1.1-“”
+### 中文标点测试1.2-（）
+### 中文标点测试1.3-、？
 ### 中文标点测试2-《 》 
 ### 中文标点测试3-【】 
 ### 中文标点测试4-：。；
