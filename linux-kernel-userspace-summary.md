@@ -28,12 +28,12 @@ linux Packet socket (1)简介 - CSDN博客
 http://blog.csdn.net/youfuchen/article/details/29782191
 
 #### 创建
--packet_socket = socket(AF_PACKET, int socket_type, int protocol);
--socket_type
-		-SOCK_RAW, 那么我们得到的数据包含所有的L2 header和payload
-		-SOCK_DGRAM, 那么我们收到的数据会去掉L2的header，是IP header和payload
--protocol 指定抓取的packet类型
-	-ETH_P_IP ETH_P_ARP ETH_P_ALL	
+- packet_socket = socket(AF_PACKET, int socket_type, int protocol);
+	- socket_type
+		- SOCK_RAW, 那么我们得到的数据包含所有的L2 header和payload
+		- SOCK_DGRAM, 那么我们收到的数据会去掉L2的header，是IP header和payload
+- protocol 指定抓取的packet类型
+	- ETH_P_IP ETH_P_ARP ETH_P_ALL	
 
 #### 绑定到某个接口/device
  bind()
