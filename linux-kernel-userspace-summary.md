@@ -12,12 +12,13 @@
 
 ## socket API
 ### raw socket
-#### PF_INET raw socket
-例如 NQA 收发 ICMP报文  socket(PF_INET,SOCK_RAW,IPPROTO_ICMP)
-##### IP_HDRINCL可以自定义IP头
-##### IP_TOS IP_TTL
+#### PF_INET raw socket直接操作IP层级的报文
 
-#### PF_PACKET raw socket
+例如 NQA 收发 ICMP报文  socket(PF_INET,SOCK_RAW,IPPROTO_ICMP)
+- IP_HDRINCL可以自定义IP头
+- IP_TOS IP_TTL
+
+#### PF_PACKET raw socket直接操作数据链路层，操作对象是接口/device
 linux raw socket - CSDN博客
 http://blog.csdn.net/lizhia1221/article/details/51946592
 
