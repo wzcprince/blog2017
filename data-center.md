@@ -92,7 +92,7 @@ http://djt.qq.com/article/view/1243
 
 ![](http://p14ws25od.bkt.clouddn.com/201712271645_418.png)
 
-#### SDN可以从网络全局做更智能的流量调度
+#### SDN集中的控制面可以从网络全局做更智能的流量调度
 
 ## 鹅厂如何构建大型基础网络平台 - 鹅厂网事 | 十条
 http://www.10tiao.com/html/721/201702/2649021339/1.html
