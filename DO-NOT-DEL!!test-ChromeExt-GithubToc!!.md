@@ -17,8 +17,11 @@ https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 ## 收包
 ### NAPI-newer newer
 
-### 中文标点测试1-“ ”（ ） 、 ？ 《 》 
-### 中文标点测试1-【】： 。 ；  ， ：
+### 中文标点测试1-“”（）、？
+### 中文标点测试2-《 》 
+### 中文标点测试3-【】 
+### 中文标点测试4-：。；
+### 中文标点测试5-，：
 ### __napi_schedule(&adapter->napi) 注意napi代表一个device()&^$%^*+!`,./?
 
 核心结构体 napi_struct
