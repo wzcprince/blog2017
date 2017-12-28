@@ -154,6 +154,8 @@ Linux同步机制--MCS自旋锁 | Just another kernel n00b
 http://larmbr.com/2014/07/26/mcs-spinlock/
 
 
+
+
 # cache
 
 cache line bouncing 和 MAC flapping
@@ -185,6 +187,9 @@ http://blog.chinaunix.net/uid-9918720-id-1640912.html
 
 http://blog.csdn.net/wzcprince/article/details/78835595#准备工作-l2504-l2507  
 
+## NUMA
+Linux 的 NUMA 技术
+https://www.ibm.com/developerworks/cn/linux/l-numa/index.html
 
 
 ## 内存其他相关专题
@@ -206,8 +211,6 @@ ULK 8.2.15 Memory Pools
 reserve of dynamic memory that can be used only by a specific kernel component,
 namely the "owner" of the pool. The owner does not normally use the reserve;
 。。。 Generally speaking, however, a memory pool can be used to allocate every kind of dynamic memory, from whole page frames to small memory areas allocated with kmalloc(). Therefore, we will generically refer to the memory units handled by a memory pool as "memory elements."
-
-
 
 
 
