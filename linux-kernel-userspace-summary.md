@@ -498,8 +498,11 @@ https://veithen.github.io/2013/11/18/iowait-linux.html
 taskset 1 dd if=/dev/sda of=/dev/null bs=1MB
 taskset 1 sh -c "while true; do true; done"
 
+## sendfile和splice
 
-
+splice系统调用实现的TCP代理 - Netfilter,iptables/OpenVPN/TCP guard:-( - CSDN博客
+http://blog.csdn.net/dog250/article/details/17061537
+正如Linus所说，splice实际上是内核空间的read/write，而tee则是内核空间的memcpy，至于sendfile，它只是一种特定的优化，该优化对于可以使用page cache的文件系统有效。
 
 
 ## 命令行技巧
