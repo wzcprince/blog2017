@@ -317,6 +317,9 @@ static const struct net_offload tcpv4_offload = {
 ### LRO-Large Receive Offload 已被GRO取代
 
 
+
+
+
 ## 发包
 ### TSO-TCP Segmentation Offload
 网卡硬件来做TCP的分片
@@ -331,6 +334,24 @@ static const struct net_offload tcpv4_offload = {
 static inline bool netif_needs_gso(struct sk_buff *skb,
 				   netdev_features_t features)
 ```
+
+### queue discipline 
+linux内核如何做Qos也叫Traffic Control的呢？？
+LNI里叫 《the Traffic Control queuing disciplines》
+ch11 Frame Transmission -》 dev_queue_xmit Func -》 Queueful devices：
+When it exists, the queuing discipline of the device is accessible through dev->qdisc.
+The input frame is queued with the enqueue virtual function, and one frame is then dequeued and transmitted via qdisc_run, described in detail in the section “Queuing Discipline Interface.”
+
+
+●queue discipline参见函数 __dev_queue_xmit(struct sk_buff *skb, void *accel_priv)
+txq = netdev_pick_tx(dev, skb, accel_priv);
+从net_device::_tx[]中选择一个netdev_queue
+然后用netdev_queue->qdisc->enqueue(skb, qdisc)
+然后 __qdisc_run(q);它会 skb = qdisc->dequeue并持续 weight_p == 64个报文
+多余的报文就要等到 raise_softirq_irqoff(NET_TX_SOFTIRQ); 了
+
+__qdisc_run(struct Qdisc *q)是个很重要的函数，他的两个调用者也很重要！！！
+
 
 ## packet_mmap接口/机制
 
@@ -485,6 +506,17 @@ taskset 1 sh -c "while true; do true; done"
 
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
+
+### 日志log journalctl
+http://man7.org/linux/man-pages/man1/journalctl.1.html
+http://man7.org/linux/man-pages/man3/syslog.3.html
+
+
+### gdb
+
+gdb file 命令
+gdb frame命令
+
 
 ### iproutes工具包
 
