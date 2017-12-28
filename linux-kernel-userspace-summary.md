@@ -10,6 +10,11 @@
 
 ## glibc其他
 
+- mallinfo()
+#include <malloc.h> struct mallinfo mi;  mi = mallinfo(); 
+C语言库函数，用来输出内存分配占用情况
+- test2
+
 ## pthread
 
 POSIX 信号量可以用memory mapped file＋pthread mutex＋ pthread condition variable实现，此时pthread mutex和pthread condition variable需要pthread_process_shared属性，这个属性的处理会有哪些特别之处呢？？看一下glibc和kernel的代码！！！
