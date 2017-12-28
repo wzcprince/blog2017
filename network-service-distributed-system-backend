@@ -1,5 +1,7 @@
 
 
+关于同步异步非阻塞阻塞的终极解析 <http://blog.csdn.net/xx77009833/article/details/12590699>
+
 异步是在强调一个任务异步完成
 自己的体会，，，阻塞和非阻塞是在说线程是否等待
 https://www.zhihu.com/question/19732473
