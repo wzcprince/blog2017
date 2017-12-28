@@ -34,6 +34,7 @@ C语言库函数，用来输出内存分配占用情况
 POSIX 信号量可以用memory mapped file＋pthread mutex＋ pthread condition variable实现，此时pthread mutex和pthread condition variable需要pthread_process_shared属性，这个属性的处理会有哪些特别之处呢？？看一下glibc和kernel的代码！！！
 
 
+
 ## socket API
 ### PF_INET
 
@@ -130,6 +131,8 @@ cpu0 19214 0 12677 6147030 846 0 322 0 0 0
 ### 自旋锁 spin lock
 
 ### RCU
+
+linux 内核的rcu 比如 rcu_dereference 也是一种lockless技术吧
 
 Linux Kernel RCU: What is RCU?
 The basic idea behind RCU is to split updates into "removal" and "reclamation" phases.
