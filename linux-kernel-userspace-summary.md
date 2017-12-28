@@ -8,7 +8,12 @@
 
 #### buddy memory allocation scheme
 
-## glibc
+## glibc其他
+
+## pthread
+
+POSIX 信号量可以用memory mapped file＋pthread mutex＋ pthread condition variable实现，此时pthread mutex和pthread condition variable需要pthread_process_shared属性，这个属性的处理会有哪些特别之处呢？？看一下glibc和kernel的代码！！！
+
 
 ## socket API
 ### PF_INET
@@ -84,6 +89,15 @@ Linux同步机制--MCS自旋锁 | Just another kernel n00b
 http://larmbr.com/2014/07/26/mcs-spinlock/
 
 # 内存
+
+## mmap【太重要了】
+### 用于共享内存
+mmap和POSIX SystemVSystemV共享内存的区别描述符的获取手段
+
+### 用于packet_mmap
+(#packet_mmap接口/机制)
+
+### hugepage
 
 # 网络
 
@@ -198,6 +212,7 @@ static inline bool netif_needs_gso(struct sk_buff *skb,
 ### 可用于报文接口和发送
  - Capture process
      setsockopt(fd, SOL_PACKET, PACKET_RX_RING, (void *) &req, sizeof(req))
+     
  - Transmission process
      setsockopt(fd, SOL_PACKET, PACKET_TX_RING, (void *) &req, sizeof(req))
 
@@ -247,7 +262,17 @@ https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
 	     - netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
 
 
-#命令行技巧
+#重点专题
+##性能分析
+
+Linux 系统性能分析工具图解读(一) 
+http://oilbeater.com/linux/2014/09/08/linux-performance-tools.html
+
+Linux Performance 
+http://www.brendangregg.com/linuxperf.html
+
+
+##命令行技巧
 
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
