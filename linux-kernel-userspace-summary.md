@@ -95,7 +95,7 @@ http://larmbr.com/2014/07/26/mcs-spinlock/
 mmap和POSIX SystemVSystemV共享内存的区别描述符的获取手段
 
 ### 用于packet_mmap
-(#packet_mmap接口/机制)
+![](#packet_mmap接口/机制)
 
 ### hugepage
 
