@@ -1,6 +1,16 @@
 [toc]
 
 # 【建立联系，融入自己的知识体系中】
+
+# Hypervisor
+## Openstack
+
+Kubernetes和OpenStack到底是什么关系？ - 知乎
+https://www.zhihu.com/question/26895729
+简单的说，kubernetes是管理container的工具，openstack是管理VM的工具。container可以运行在物理机上，也可以运行在VM上。所以kubernetes不是需要openstack的支持。但对于云计算来说，很多IasS都通过openstack来管理虚拟机。然后用户可以在这些虚拟机上运行docker，可以通过kubernetes进行管理。
+
+
+
 # 网络
 
 ## 虚拟网络
@@ -23,6 +33,11 @@ overlay最重要的一点就是虚拟网络和底层物理网络的解耦！！�
 
 ### 服务器网卡带宽
 
+
+
+
+
+
 ## 数据中心互联技术DCI Data Center Inter-connect
 
 参见 中国电信产品导购
@@ -39,6 +54,12 @@ http://developer.huawei.com/ict/forum/thread-14113-1-1.html
 ### MPLS VPN
 
 中国电信MPLS-VPN（英文名称Virtual Private Network，虚拟专网）业务**依托于中国电信宽带骨干网169和CN2**，采用MPLS（多协议标记交换）协议，结合服务等级、流量控制等技术，为用户在公共MPLS网络上构建企业的虚拟专网，满足其不同城市（国际、国内）分支机构间安全、快速、可靠的通信需求，并能够支持数据、语音、图像等高质量、高可靠性要求的多媒体业务。目前，通过中国电信宽带骨干网向客户提供的MPLS－VPN业务，支持**以太网、帧中继、DDN、ATM、宽带等多种接入方式**，能够为集团客户提供速率为**N*64K-2.5G**、端到端的MPLS VPN业务，并且用户可以随时根据需要扩展网络（增加端口、提高速率等）  
+
+云计算网络的应用场景-云计算-华为企业互动社区
+http://support.huawei.com/huaweiconnect/enterprise/thread-367469-1-1.html  
+【vpls用于DCI网络，即DC互联网络】
+
+
 
 #### MSTP（以太网专线）
 
@@ -78,6 +99,11 @@ SDN流量调优技术对整网流量监控并实时调整，实现链路间的�
 更重要的是，在DC深刻影响着未来骨干网络发展方向的今天，华为已携手**中国电信等运营商共同建设DCI专有网络**，实现面向云时代DCI网络重构的探索实践和商用部署。
 
 构建面向未来的智慧DCI网络，实现云网协同，已成为云时代的必然趋势。
+
+
+
+
+
 
 
 
