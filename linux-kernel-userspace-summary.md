@@ -4,7 +4,9 @@
 # 用户态
 ## 进程虚拟地址空间
 ### malloc()的glibc实现
+malloc也有buddy scheme
 参见 Linux System Programming 2nd Edition P308 Section Anonymous Memory Mappings
+**学习一下malloc的glibc实现，很牛叉的哟 **
 
 #### buddy memory allocation scheme
 
@@ -143,7 +145,9 @@ Linux同步机制--MCS自旋锁 | Just another kernel n00b
 http://larmbr.com/2014/07/26/mcs-spinlock/
 
 
+# cache
 
+cache line bouncing 和 MAC flapping
 
 
 
@@ -159,8 +163,22 @@ https://github.com/wzcprince/blog2017/blob/master/linux-kernel-userspace-summary
 
 ### hugepage
 
+## barrier
 
-## 其他相关专题
+内存屏障和锁机制对比
+
+内存屏障的作用：barrier() - CSDN博客
+http://blog.csdn.net/cyx1231st/article/details/9262893  
+内存屏障主要解决了两个问题：单处理器下的乱序问题和多处理器下的内存同步问题。
+
+LINUX内核内存屏障 翻译 Documentation/memory-barriers.txt
+http://blog.chinaunix.net/uid-9918720-id-1640912.html 
+
+http://blog.csdn.net/wzcprince/article/details/78835595#准备工作-l2504-l2507  
+
+
+
+## 内存其他相关专题
 
 
 /proc/meminfo的实现： 函数 meminfo_proc_show 其他的proc见proc_create 和proc_create_data
@@ -181,6 +199,10 @@ namely the "owner" of the pool. The owner does not normally use the reserve;
 。。。 Generally speaking, however, a memory pool can be used to allocate every kind of dynamic memory, from whole page frames to small memory areas allocated with kmalloc(). Therefore, we will generically refer to the memory units handled by a memory pool as "memory elements."
 
 
+# VFS The Common File Model
+
+VFS mount 和 superblock的数据结构关系？？？
+mount的文件系统挂载点本身也是树形结构！！
 
 
 
@@ -413,13 +435,29 @@ libvert 的位置！！！！！
 ![](http://p14ws25od.bkt.clouddn.com/201712281651_91.png)
 
 
-## 性能分析
+
+
+
+
+
+
+## 性能专题
 
 Linux 系统性能分析工具图解读(一) 
 http://oilbeater.com/linux/2014/09/08/linux-performance-tools.html
 
 Linux Performance 
 http://www.brendangregg.com/linuxperf.html
+
+### 很好玩的试验
+The precise meaning of I/O wait time in Linux
+https://veithen.github.io/2013/11/18/iowait-linux.html
+其中的这个试验很好玩呀！！！：：：
+taskset 1 dd if=/dev/sda of=/dev/null bs=1MB
+taskset 1 sh -c "while true; do true; done"
+
+
+
 
 
 ## 命令行技巧
