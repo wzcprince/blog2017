@@ -31,6 +31,28 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 高性能负载均衡设计与实现-博客-云栖社区-阿里云
 <https://yq.aliyun.com/articles/21889> 
 
+## 爱奇艺DPVS
+
+## GoogleMaglev
+
+Google 是如何做负载均衡的？ 
+http://oilbeater.com/%E5%8D%9A%E5%AE%A2/2016/11/21/google-loadbalancert.html
+巨牛逼，直接改网卡驱动
+Maglev: A Fast and Reliable Software Network Load Balancer 
+['mæglɛv]
+http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf  
+
+A good summary of popular kernel bypass techniques is presented in [10]. 
+[10] Kernel bypass.  http://blog.cloudflare.com/kernel-bypass  . 
+
+
+最后，虚拟化环境中已经采用Overlay虚拟网络了，所以TUNNEL的方式变得完全多余。而DR方式最大的缺点：需要LB和后端服务器在同一个二层网络，而这在UCloud的虚拟化网络中完全不是问题。主流的SDN方案追求的正是大二层带来的无缝迁移体验，且早已采用各种优化手段(例如ARP代理)来优化大二层虚拟网络。
+
+##Vortex
+
+从Maglev到Vortex，揭秘100G＋线速负载均衡的设计与实现
+http://www.infoq.com/cn/articles/Maglev-Vortex
+
 
 # RPC
 
