@@ -160,6 +160,8 @@ http://larmbr.com/2014/07/26/mcs-spinlock/
 
 cache line bouncing 和 MAC flapping
 
+## cacheline对齐
+内核源代码里到处都是 ____cacheline_aligned 
 
 
 # 内存
