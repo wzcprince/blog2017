@@ -80,18 +80,52 @@ sockets for local interprocess communication
 参见 http://man7.org/linux/man-pages/man7/netlink.7.html 
 communication between kernel and user space (AF_NETLINK)
 
-# 同步互斥机制
-## 自旋锁 spin lock
 
-## RCU
+
+
+
+
+
+# 进程管理
+## scheduler
+Completely Fair Scheduler 
+
+LKD P66 Yielding Processor Time 
+
+CPU isolation 把某个CPU核从linux scheduler中剔除
+sys_sched_yield() -> fair_sched_class:: yield_task_fair
+
+完全公平调度器 - 维基百科，自由的百科全书
+https://zh.wikipedia.org/wiki/%E5%AE%8C%E5%85%A8%E5%85%AC%E5%B9%B3%E6%8E%92%E7%A8%8B%E5%99%A8
+选取花费CPU执行时间最少的进程来进行调度。CFS主要由sched_entity 内含的 vruntime所决定，
+不再跟踪process的sleep time，并放弃active/expire的概念, 
+【哈哈，应该就是说不按时间片来了，死循环的进程不会expire】
+runqueue里面所有的进程都平等对待，CFS使用“虚拟运行时”（virtual running time）来表示某个任务的时间量。
+
+那天和佳雨讨论的，死循环的时候CPU 100%
+那操作系统的CPU利用率是如何计算出来的呢？？？
+windows 7四核CPU的时候单线程死循环，
+CPU利用率是25%
+cat /proc/stat
+cpu0 19214 0 12677 6147030 846 0 322 0 0 0
+
+## 同步互斥机制
+### 自旋锁 spin lock
+
+### RCU
 
 Linux Kernel RCU: What is RCU?
 The basic idea behind RCU is to split updates into "removal" and "reclamation" phases.
 
-## MCS自旋锁【好牛叉】
-### 降低普通自旋锁cache line bouncing问题
+### MCS自旋锁【好牛叉】
+#### 降低普通自旋锁cache line bouncing问题
 Linux同步机制--MCS自旋锁 | Just another kernel n00b
 http://larmbr.com/2014/07/26/mcs-spinlock/
+
+
+
+
+
 
 # 内存
 
@@ -105,9 +139,16 @@ https://github.com/wzcprince/blog2017/blob/master/linux-kernel-userspace-summary
 
 ### hugepage
 
+## 其他相关专题
+
+/proc/meminfo的实现： 函数 meminfo_proc_show 其他的proc见proc_create 和proc_create_data
+
+
+
+
+
+
 # 网络
-
-
 RSS: Receive Side Scaling 网卡硬件实现
 RPS: Receive Packet Steering Google软件
 RFS: Receive Flow Steering
@@ -268,8 +309,30 @@ https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
 	     - netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
 
 
-#重点专题
-##性能分析
+# 重点专题
+
+## 多线程
+
+### Thread Local Storage 
+
+2017年10月19日 GCC支持静态TLS变量： 
+D:\!learn\code\glibc\glibc-2.23\csu\errno.c中 __thread int errno;
+pthread_key_create (&thread_key1, NULL); 创建的是动态TLB
+
+### CPU affinity
+#### 线程的CPU affinity 线程绑核
+Linux下的绑核命令——taskset - 时间轨迹
+http://time-track.cn/taskset-command.html  
+
+Linux 线程绑核 - dzqabc - 博客园
+http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353215.html
+【注意啊，每个CPU都有 runqueue 哟 】
+
+CPU isolation 把某个CPU核从linux scheduler中剔除
+
+#### 中断的CPU affinity
+
+## 性能分析
 
 Linux 系统性能分析工具图解读(一) 
 http://oilbeater.com/linux/2014/09/08/linux-performance-tools.html
@@ -278,7 +341,7 @@ Linux Performance
 http://www.brendangregg.com/linuxperf.html
 
 
-##命令行技巧
+## 命令行技巧
 
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
