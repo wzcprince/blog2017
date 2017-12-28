@@ -2,6 +2,20 @@
 
 # 【建立联系，融入自己的知识体系中】
 # 网络
+
+## 虚拟网络
+### VxLan
+
+VXLAN技术研究 - CSDN博客
+http://blog.csdn.net/sinat_31828101/article/details/50504656
+【很好很详细】
+OpenFlow与VxLAN在云网络的应用_AlibabaInfrastructure_新浪博客
+http://blog.sina.com.cn/s/blog_e59371cc0102vl9r.html  
+
+overlay最重要的一点就是虚拟网络和底层物理网络的解耦！！！！！
+加层的重要性
+
+
 ## 带宽
 
 ### 出口带宽
@@ -38,6 +52,8 @@ http://developer.huawei.com/ict/forum/thread-14113-1-1.html
 #### 数字电路SDH
 速率高，可达10Gbit/s
 
+
+
 ## DCI网络重构-新建DCI骨干网
 
 ### 必要性
@@ -62,6 +78,10 @@ SDN流量调优技术对整网流量监控并实时调整，实现链路间的�
 更重要的是，在DC深刻影响着未来骨干网络发展方向的今天，华为已携手**中国电信等运营商共同建设DCI专有网络**，实现面向云时代DCI网络重构的探索实践和商用部署。
 
 构建面向未来的智慧DCI网络，实现云网协同，已成为云时代的必然趋势。
+
+
+
+
 
 # 文章、帖子收集
 
