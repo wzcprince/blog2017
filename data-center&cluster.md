@@ -2,12 +2,56 @@
 
 # 【建立联系，融入自己的知识体系中】
 
+
+# 虚拟化
+
+## 半虚拟化
+IO半虚拟化：虚拟设备队列VMDq技术解析-IT168 虚拟化专区
+http://virtual.it168.com/a2010/0126/843/000000843481_all.shtml
+
+virtIO vring工作机制分析 | OenHan
+http://oenhan.com/virtio-vring
+
+**半虚拟化和docker结合 好玩 ！！ **
+7. Virtio_user for Container Networking — Data Plane Development Kit 18.02.0-rc0 documentation
+http://dpdk.org/doc/guides/howto/virtio_user_for_container_networking.html
+
+## QEMU 发音Key-Moo
+
+https://en.wikipedia.org/wiki/Talk:QEMU#How_do_you_pronounce_it.3F  
+In the OpenStack cloud Nova team meetings I hear it pronounced 3 weeks: Key-Moo, Q.E.M.U., and Kwee-Moo. 2017-09-14 — Preceding unsigned comment added by Medberry (talk • contribs) 19:37, 14 September 2017 (UTC)
+
+## Intel VT-d
+
+https://software.intel.com/en-us/blogs/2009/06/25/understanding-vt-d-intel-virtualization-technology-for-directed-io
+"VT-d" stands for "Intel Virtualization Technology for Directed I/O".  
+
+VT-d, at the time of this writing, includes four key capabilities
+
+1. I/O device assignment. This feature allows an administrator to assign I/O devices to VMs in any desired configuration.
+
+2. DMA remapping. Supports address translations for device DMA data transfers.
+
+3. Interrupt remapping. Provides VM routing and isolation of device interrupts.
+
+4. Reliability features. Reports and records system software DMA and interrupt erros that may otherwise corrupt memory of impact VM isolation.
+
+参考：
+https://www-ssl.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.html?iid=tech_vt+tech  
+https://www.intel.com/content/dam/www/public/us/en/documents/product-specifications/vt-directed-io-spec.pdf  
+
+
+
+
+
+
 # Hypervisor
 ## Openstack
 
 Kubernetes和OpenStack到底是什么关系？ - 知乎
 https://www.zhihu.com/question/26895729
 简单的说，kubernetes是管理container的工具，openstack是管理VM的工具。container可以运行在物理机上，也可以运行在VM上。所以kubernetes不是需要openstack的支持。但对于云计算来说，很多IasS都通过openstack来管理虚拟机。然后用户可以在这些虚拟机上运行docker，可以通过kubernetes进行管理。
+
 
 
 
@@ -24,6 +68,17 @@ http://blog.sina.com.cn/s/blog_e59371cc0102vl9r.html
 
 overlay最重要的一点就是虚拟网络和底层物理网络的解耦！！！！！
 加层的重要性
+
+
+## 大二层
+
+vxlan 的 BUM问题，怎么解决？？？
+[](#纯l3的overlay转发规避大二层的bum问题)
+
+还可以参见
+http://blog.csdn.net/sinat_31828101/article/details/50504656  
+问题2：大二层网络下，需要维护一个非常庞大的mac和arp表项，尤其是TOR交换机的mac地址表大小可能会影响整个fabric的规模。
+如何解决：由于overlay组网中，网络设备互联多采用三层互联的方式，这样arp表就无需泛洪到全网，所以每个tor交换机仅仅需要维护一张本地的mac地址表即可。
 
 
 ## 带宽
