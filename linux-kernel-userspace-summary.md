@@ -14,7 +14,7 @@
 还有这三个device file呢：！
 /dev/stdin       /dev/stdout       /dev/stderr
 https://github.com/nginxinc/docker-nginx/blob/14aa3b1b80341099afbf90eb0a9b9061b7145f18/mainline/stretch/Dockerfile 中： 
-# forward request and error logs to docker log collector
+forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 就可以把标准输出重定向到access.log。。。
@@ -89,6 +89,9 @@ http://blog.csdn.net/youfuchen/article/details/29782191
 参见  http://man7.org/linux/man-pages/man7/unix.7.html  
 sockets for local interprocess communication
 
+半虚拟化时，vhost和virtio之间通过Unix address family通信！
+
+
 ### PF_NETLINK
 
 参见 http://man7.org/linux/man-pages/man7/netlink.7.html 
@@ -153,9 +156,26 @@ https://github.com/wzcprince/blog2017/blob/master/linux-kernel-userspace-summary
 
 ### hugepage
 
+
 ## 其他相关专题
 
+
 /proc/meminfo的实现： 函数 meminfo_proc_show 其他的proc见proc_create 和proc_create_data
+
+
+与dpdk中的memory pool类似，linux kernel中与之对应的是slab
+linux内核中也有memory pool，但一般都是紧急情况下或者给某个子系统专用的，一般情况下并不会用，分两种：
+ULK 8.1.4 The Pool of Reserved Page Frames
+
+However, some kernel control paths cannot be blocked while requesting memory, for instance, when handling an interrupt or when executing code inside a critical region. In these cases, a kernel control path should issue atomic memory allocation requests (using the **GFP_ATOMIC** flag; see the later section "The Zoned Page Frame Allocator"). An atomic request never blocks: if there are not enough free pages, the allocation simply fails. Although there is no way to ensure that an atomic memory allocation request never fails, the kernel tries hard to minimize the likelihood of this unfortunate event. In order to do this, the kernel reserves a pool of page frames for atomic memory allocation requests to be used only on low-on memory conditions.
+
+...page frames can be used only to satisfy atomic
+memory allocation requests issued by interrupt handlers or inside critical regions.
+
+ULK 8.2.15 Memory Pools
+reserve of dynamic memory that can be used only by a specific kernel component,
+namely the "owner" of the pool. The owner does not normally use the reserve;
+。。。 Generally speaking, however, a memory pool can be used to allocate every kind of dynamic memory, from whole page frames to small memory areas allocated with kmalloc(). Therefore, we will generically refer to the memory units handled by a memory pool as "memory elements."
 
 
 
@@ -382,6 +402,16 @@ http://www.brendangregg.com/linuxperf.html
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
 
+### iproutes工具包
+
+ip link set ens38 up
+ip address add 1.1.1.1/24 dev ens38
+
+ip route add default via 192.168.11.2 dev ens38
+ip route replace default via 192.168.11.2 dev ens38
+
+ip neighbor add 192.168.11.2  lladdr  00:0c:29:0f:d8:05 nud permanent dev ens38
+ip neighbor change 192.168.11.2  lladdr  00:0c:29:0f:d8:05 nud permanent dev ens38
 
 
 
