@@ -247,3 +247,11 @@ https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
 	     - netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
 
 
+#命令行技巧
+
+最实用的 Linux 命令行使用技巧
+http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
+
+
+
+
