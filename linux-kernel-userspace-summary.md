@@ -22,6 +22,15 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 就可以把标准输出重定向到access.log。。。
 然后启动主进程：  CMD ["nginx", "-g", "daemon off;"]
 
+### /proc/self/mounts
+root@ubuntu:/mnt/hgfs/learn/for_linux_vm# ll /proc/mounts 
+lrwxrwxrwx 1 root root 11 Oct 27 20:25 /proc/mounts -> self/mounts 即/proc/self/mounts
+会列出所有mount的文件系统，
+例如：
+cgroup /sys/fs/cgroup/cpu
+hugetlbfs /dev/hugepages hugetlbfs rw,relatime 0 0
+mqueue /dev/mqueue
+
 
 
 ## glibc其他
@@ -199,10 +208,22 @@ namely the "owner" of the pool. The owner does not normally use the reserve;
 。。。 Generally speaking, however, a memory pool can be used to allocate every kind of dynamic memory, from whole page frames to small memory areas allocated with kmalloc(). Therefore, we will generically refer to the memory units handled by a memory pool as "memory elements."
 
 
+
+
+
+
+
 # VFS The Common File Model
 
 VFS mount 和 superblock的数据结构关系？？？
 mount的文件系统挂载点本身也是树形结构！！
+struct mount的成员
+- list_head mnt_mounts  // list of children, anchored here.
+- list_head mnt_child
+
+函数__attach_mnt(mount* , )
+
+
 
 
 
