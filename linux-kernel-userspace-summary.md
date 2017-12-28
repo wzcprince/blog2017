@@ -8,6 +8,20 @@
 
 #### buddy memory allocation scheme
 
+## VFS Interface【至关重要】
+### VFS是极为重要的接口，不要老想着那一坨API
+
+还有这三个device file呢：！
+/dev/stdin       /dev/stdout       /dev/stderr
+https://github.com/nginxinc/docker-nginx/blob/14aa3b1b80341099afbf90eb0a9b9061b7145f18/mainline/stretch/Dockerfile 中： 
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+就可以把标准输出重定向到access.log。。。
+然后启动主进程：  CMD ["nginx", "-g", "daemon off;"]
+
+
+
 ## glibc其他
 
 - mallinfo()
@@ -307,6 +321,28 @@ https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
      It runs on FreeBSD and	Linux, and includes 
 	     - VALE, a very fast	and modular in-kernel software switch/data-plane, and	
 	     - netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
+
+
+
+
+
+# 块设备
+
+
+18.2 Ext2 Disk Data structure的图
+以及 ext2_inode 和 ext2_inode_info P717 P724
+ext2_superblock 和 ext2_sb_info  P715 
+gendisk即整个磁盘有superblock吗？
+----回答，整个磁盘有MBR 主引导记录 里面有partition table和BootLoader
+fdisk工具可以修改partition table中的记录的active flag
+
+
+
+
+
+
+
+
 
 
 # 重点专题
