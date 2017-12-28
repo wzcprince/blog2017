@@ -186,6 +186,11 @@ namely the "owner" of the pool. The owner does not normally use the reserve;
 
 
 # 网络
+
+
+linux内核networking网络文档目录：
+https://www.kernel.org/doc/Documentation/networking/00-INDEX  
+
 RSS: Receive Side Scaling 网卡硬件实现
 RPS: Receive Packet Steering Google软件
 RFS: Receive Flow Steering
@@ -390,6 +395,23 @@ http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353215.html
 CPU isolation 把某个CPU核从linux scheduler中剔除
 
 #### 中断的CPU affinity
+
+
+## 虚拟化专题
+
+### libvert
+libvirt: libvirt Application Development Guides
+https://libvirt.org/devguide.html
+
+libvert 的位置！！！！！
+原文链接 https://wenku.baidu.com/view/28f710240242a8956aece4bd.html    
+![](http://p14ws25od.bkt.clouddn.com/201712281649_609.png)
+
+### 半虚拟化
+半虚拟化 virtio 和 vhost 在linux内核里实现貌似不复杂：
+![](http://p14ws25od.bkt.clouddn.com/201712281651_830.png)
+![](http://p14ws25od.bkt.clouddn.com/201712281651_91.png)
+
 
 ## 性能分析
 
