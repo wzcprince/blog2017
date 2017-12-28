@@ -20,11 +20,19 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 
 动态数据也要缓存，不用查数据库
 
+# 七层协议
+<https://github.com/wzcprince/blog2017/blob/master/network-protocols.md#应用层-七层协议>
 
 # RPC
 
 ## resetfull
 restful是一种rpc调用方式，现在用的是http加json
+
+# Web服务
+
+What really happens when you navigate to a URL:
+http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250dbd02fa161b6d076d7650c92f2&scene=2&from=timeline&isappinstalled=0#rd
+
 
 
 # 相关资源
@@ -39,5 +47,9 @@ SOA(Service Oriented Architecture)
 
 10.4.2 里提到的 idempotent  [aɪ'dɛmpətənt] ，
  【想到 L2VPN给VPWS申请单个标签的时候，肯定是可以并发请求的，那并发请求如何区分呢？用的是事务号吗？应该不是，因为并发创建bfd用mcm的时候bfd会把pwindex和pwtunneltype(vpws/vpls)返回】
+
+
+
+
 
 
