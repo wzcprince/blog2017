@@ -74,6 +74,10 @@ communication between kernel and user space (AF_NETLINK)
 ## 自旋锁 spin lock
 
 ## RCU
+
+Linux Kernel RCU: What is RCU?
+The basic idea behind RCU is to split updates into "removal" and "reclamation" phases.
+
 ## MCS自旋锁【好牛叉】
 ### 降低普通自旋锁cache line bouncing问题
 Linux同步机制--MCS自旋锁 | Just another kernel n00b
