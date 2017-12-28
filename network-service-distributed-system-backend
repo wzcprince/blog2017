@@ -25,6 +25,13 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 # 七层协议
 <https://github.com/wzcprince/blog2017/blob/master/network-protocols.md#应用层-七层协议>
 
+# 负载均衡
+
+## 阿里版LVS
+高性能负载均衡设计与实现-博客-云栖社区-阿里云
+<https://yq.aliyun.com/articles/21889> 
+
+
 # RPC
 
 ## resetfull
