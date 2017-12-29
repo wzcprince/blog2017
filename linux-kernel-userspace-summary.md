@@ -163,6 +163,17 @@ cache line bouncing 和 MAC flapping
 ## cacheline对齐
 内核源代码里到处都是 ____cacheline_aligned 
 
+## cache line bouncing
+ULK 8.2.10 slab coloring机制用来解决cache line bouncing问题
+Objects that have the same offset within different slabs will, with a relatively high
+probability, end up mapped in the same cache line. The cache hardware might therefore waste
+memory cycles transferring two objects from **the same cache line back and forth to different RAM
+locations, while other cache lines go underutilized**. The slab allocator tries to reduce this unpleasant
+cache behavior by a policy called slab coloring : different arbitrary values called colors are assigned
+to the slabs.
+
+Coloring essentially leads to moving some of the free area of the slab from the end to the beginning.
+![](http://p14ws25od.bkt.clouddn.com/201712291648_167.png)
 
 # 内存
 
