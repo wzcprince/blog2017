@@ -194,6 +194,22 @@ Linux 的 NUMA 技术
 https://www.ibm.com/developerworks/cn/linux/l-numa/index.html
 
 
+## sys_sendfile和sys_splice核心实现
+
+- sys_sendfile是借助pipe_inode_info对象来实现，
+	- 先从in_fd中读数据splice拼接到pipe
+	- 再从pipe splice到out_fd
+
+- sys_splice是从文件splice到pipe
+
+
+两个系统调用的实现过程中，在读文件的时候如果不用page cache，则会用 default_file_splice_read
+![](http://p14ws25od.bkt.clouddn.com/201712290851_58.png)
+
+Efficient data transfer through zero copy
+<https://www.ibm.com/developerworks/linux/library/j-zerocopy/>
+
+
 ## 内存其他相关专题
 
 
