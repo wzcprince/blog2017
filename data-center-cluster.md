@@ -168,6 +168,50 @@ SDN流量调优技术对整网流量监控并实时调整，实现链路间的�
 # 文章、帖子收集
 
 
+##  从25G到100G-阿里数据中心网络架构设计分享
+阿里巴巴技术保障部高级网络专家曹捷
+原文地址：
+https://www.sohu.com/a/207565881_582307
+http://www.idckx.com/shujuzhongxin/13416.html
+
+#### 阿里网络架构演进过程
+先说一下演进结果：
+其中我们尝试过各种各样的数据中心解决方案，一个坑一个坑踩过来之后，现在决定<font color = "0xDD000000" size = "3" >**把网络做到最简单，简单到什么呢?简单到一个网络里面只有一个路由协议，而且这个BGP路由协议没有任何扩展的协议族。我的网络在接入交换机就在最后的端口上，提供给服务器接入  **</font>【BUM问题，BUM(Broadcast&Unknown-unicast&Multicast)报文】。
+
+- 2016年 阿里云对网络是重度依赖，重度耦合
+解决方法：当时我们的策略是解耦、简单化，我们干脆提出来所有的东西都阿里云自己做，所以阿里云**在组织架构上做了调整**，有了专门的虚拟网络团队和物理网络团队，我们在虚拟网络之下成立了物理网络团队，**我是物理网络团队的**。上面也有专职构建虚拟网络。
+
+#### 展望未来
+
+##### 可视化
+###### 目的是要解决三个问题：
+- 看不见，比如延时、转发路径、buffer和drop
+- 找不到，通过随包的检测和拓扑的维护，快速定位问题所在的位置
+- 第三个是抹不准，今天我们做网络的设计和交换机选型的时候，你抹得准是多少的交换机吗?是48+8、48+6还是48+10，这些都抹不准，很多情况下是猜的，或者供应商告诉你这已经是世界上最好的交换机就买了
+
+###### 实现方式
+- 物理网络上erspan做数据平面的关键信息的捕获
+- 控制平面上会用gRPC
+
+	物理网络上我们会用erspan做数据平面的关键信息的捕获，然后在控制平面上会用gRPC，交换机当中今天很多存在但是看不到的信息拉出来，比如说buffer的使用情况，比如出现芯片级的异常或者出现SDK的异常，这些在交换本身是有认证或者是有维护的，但是通过传统监控手段看不到，今天我们通过一个更高效的手段，我为什么不选择让供应商做一个新的SSP的ODI呢?是因为传统网络的监控协议太重，gRPC是轻量的模式，可以定义非常好的数据结构，但是gRPC是非常轻的，量非常好。
+	有了gRPC也有一个问题就是，这时候需要用INT，INT是芯片级别的能力支持，它和软件没有什么太大关系，在将来我们会看到下一代所有交换芯片商几乎都会支持INT，FaceBook也好、微软也好都在跟进，阿利耶在努力。其实世界上主要由两个交换芯片供应商，两大交换芯片供应商我们都和他们合作，定义阿里所需要的INT能力。
+
+	这是我们对于整个可视化意义的判断。**未来的数据中心必然是一个整体，DC as a computer，我们认为网络是computer的I/O**，要达到这样的目的，现有的网络设计是封闭的，所以没有办法对外开放，它是阻碍前进的东西。可能的方法，说我可不可以自己做交换机，自己做交换机的OS，完全自研白盒交换机。**可视化是利用现有网络技术最快速的能够将网络信息开放出来的方法**，有了这种方法之后其实不一定非要去自研一台交换机或者自OS就完全可以去调配和管控物理网络资源。所以我们得出的结论，可视化将会在未来3-5年之内是阿里巴巴重点全力投入的数据中心网络技术，他会帮助我们在没有办法实现完全自研支持最大可能的掌握数据交配。
+	
+###### erspan Encapsulated Remote Switched Port ANalyzer 
+封装远端交换端口分析，用到了GRE隧道
+	Information About ERSPAN
+	encapsulated remote switched port analyzer 
+https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/5_x/nx-os/system_management/configuration/guide/sm_nx_os_cg/sm_erspan.html#15525
+ERSPAN transports mirrored traffic over an IP network.
+
+###### gRPC https://grpc.io/
+- high performance
+- using Protocol Buffers, a powerful binary serialization toolset and language
+- http/2 based transport
+- Simple service definition
+- Works across languages and platforms
+
 ## 数据中心间网络SDN解决思路探讨 - 鹅厂网事
 数据中心间网络SDN解决思路探讨 ( 上集 )-腾讯大讲堂
 http://djt.qq.com/article/view/1236
@@ -263,7 +307,7 @@ http://www.10tiao.com/html/721/201702/2649021335/1.html
 ### 纯L3的overlay转发，规避大二层的BUM问题 
 
 
-## 5.0V已经成功的在腾讯云黑石项目投入运营，并逐渐走向成熟，她以Infrastructure As Code的方式整合了腾讯所有IDC网络节点，并为上层的网络服务搭建了一个弹性敏捷的网络支撑平台。将腾讯的数据中心网络架构正式带入了SDN的时代。
+### 5.0V已经成功的在腾讯云黑石项目投入运营，并逐渐走向成熟，她以Infrastructure As Code的方式整合了腾讯所有IDC网络节点，并为上层的网络服务搭建了一个弹性敏捷的网络支撑平台。将腾讯的数据中心网络架构正式带入了SDN的时代。
 
 
 ## 青岛联通新建滨海数据中心 阿里已预订2/3 - C114中国通信网
@@ -275,49 +319,6 @@ http://m.c114.net/w119-907242.html
 ## 类似阿里巴巴、百度、腾讯，他们的IDC机房现在都在哪里呢？一般是自己建的还是租用的？ - 知乎
 https://www.zhihu.com/question/24993531
 
-##  从25G到100G-阿里数据中心网络架构设计分享
-阿里巴巴技术保障部高级网络专家曹捷
-原文地址：
-https://www.sohu.com/a/207565881_582307
-http://www.idckx.com/shujuzhongxin/13416.html
-
-#### 阿里网络架构演进过程
-先说一下演进结果：
-其中我们尝试过各种各样的数据中心解决方案，一个坑一个坑踩过来之后，现在决定<font color = "0xDD000000" size = "3" >**把网络做到最简单，简单到什么呢?简单到一个网络里面只有一个路由协议，而且这个BGP路由协议没有任何扩展的协议族。我的网络在接入交换机就在最后的端口上，提供给服务器接入  **</font>【BUM问题，BUM(Broadcast&Unknown-unicast&Multicast)报文】。
-
-- 2016年 阿里云对网络是重度依赖，重度耦合
-解决方法：当时我们的策略是解耦、简单化，我们干脆提出来所有的东西都阿里云自己做，所以阿里云**在组织架构上做了调整**，有了专门的虚拟网络团队和物理网络团队，我们在虚拟网络之下成立了物理网络团队，**我是物理网络团队的**。上面也有专职构建虚拟网络。
-
-#### 展望未来
-
-##### 可视化
-###### 目的是要解决三个问题：
-- 看不见，比如延时、转发路径、buffer和drop
-- 找不到，通过随包的检测和拓扑的维护，快速定位问题所在的位置
-- 第三个是抹不准，今天我们做网络的设计和交换机选型的时候，你抹得准是多少的交换机吗?是48+8、48+6还是48+10，这些都抹不准，很多情况下是猜的，或者供应商告诉你这已经是世界上最好的交换机就买了
-
-###### 实现方式
-- 物理网络上erspan做数据平面的关键信息的捕获
-- 控制平面上会用gRPC
-
-	物理网络上我们会用erspan做数据平面的关键信息的捕获，然后在控制平面上会用gRPC，交换机当中今天很多存在但是看不到的信息拉出来，比如说buffer的使用情况，比如出现芯片级的异常或者出现SDK的异常，这些在交换本身是有认证或者是有维护的，但是通过传统监控手段看不到，今天我们通过一个更高效的手段，我为什么不选择让供应商做一个新的SSP的ODI呢?是因为传统网络的监控协议太重，gRPC是轻量的模式，可以定义非常好的数据结构，但是gRPC是非常轻的，量非常好。
-	有了gRPC也有一个问题就是，这时候需要用INT，INT是芯片级别的能力支持，它和软件没有什么太大关系，在将来我们会看到下一代所有交换芯片商几乎都会支持INT，FaceBook也好、微软也好都在跟进，阿利耶在努力。其实世界上主要由两个交换芯片供应商，两大交换芯片供应商我们都和他们合作，定义阿里所需要的INT能力。
-
-	这是我们对于整个可视化意义的判断。**未来的数据中心必然是一个整体，DC as a computer，我们认为网络是computer的I/O**，要达到这样的目的，现有的网络设计是封闭的，所以没有办法对外开放，它是阻碍前进的东西。可能的方法，说我可不可以自己做交换机，自己做交换机的OS，完全自研白盒交换机。**可视化是利用现有网络技术最快速的能够将网络信息开放出来的方法**，有了这种方法之后其实不一定非要去自研一台交换机或者自OS就完全可以去调配和管控物理网络资源。所以我们得出的结论，可视化将会在未来3-5年之内是阿里巴巴重点全力投入的数据中心网络技术，他会帮助我们在没有办法实现完全自研支持最大可能的掌握数据交配。
-	
-###### erspan Encapsulated Remote Switched Port ANalyzer 
-封装远端交换端口分析，用到了GRE隧道
-	Information About ERSPAN
-	encapsulated remote switched port analyzer 
-https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/5_x/nx-os/system_management/configuration/guide/sm_nx_os_cg/sm_erspan.html#15525
-ERSPAN transports mirrored traffic over an IP network.
-
-###### gRPC https://grpc.io/
-- high performance
-- using Protocol Buffers, a powerful binary serialization toolset and language
-- http/2 based transport
-- Simple service definition
-- Works across languages and platforms
 
 
 ## 华为云数据中心
