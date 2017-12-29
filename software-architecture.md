@@ -4,7 +4,7 @@
 ## 软件架构实践读书笔记总结
 Software Architecture in Practice, Third Edition
 
-### 定义【四点】
+### software architecture的定义
 software architecture 是什么 P4-P6
 
 #### 1.a set of software structures
