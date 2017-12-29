@@ -164,6 +164,11 @@ cache line bouncing 和 MAC flapping
 内核源代码里到处都是 ____cacheline_aligned 
 
 ## cache line bouncing
+
+### MCS
+参见 [#mcs自旋锁好牛叉](#mcs自旋锁好牛叉)
+
+### slab coloring
 ULK 8.2.10 slab coloring机制用来解决cache line bouncing问题
 Objects that have the same offset within different slabs will, with a relatively high
 probability, end up mapped in the same cache line. The cache hardware might therefore waste
