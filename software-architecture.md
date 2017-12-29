@@ -6,8 +6,11 @@ Software Architecture in Practice, Third Edition
 
 ### software architecture的定义
 P4-P6
-software architecture is the set of structures needed to reason about【论证】 the system,
+software architecture is the set of structures needed to reason about【推理论证】 the system,
 which comprise software elements, relations among them, and poperties of both.
+
+P5右下
+architecture consists of structures and structures consist of elements and relations.
 
 #### 1.a set of software structures
 
@@ -15,7 +18,13 @@ P5
 **对重要关键的系统属性有用的structure才能叫architecture structure**
 
 #### 2.an abstraction 
-an abstraction that is essential to taming the complexity of a system
+an abstraction that is essential to taming the complexity of a system.
+
+an architecture is foremost an **abstraction** of a system that selects certain details and suppresses others. 
+**In all modern systems**, element被partition为public and private parts
+- public parts就是接口，elements interact with each other by means of interfaces.系统架构正是基于此
+- private parts也就是private implementation details of elements are **NOT architectural**
+
 We simply cannot, and do not want to deal with all of the complexity all the time.
 【做合理的抽象，把整个系统**分解分割划分partition**为子系统、子模块，从而降低复杂度】
 
