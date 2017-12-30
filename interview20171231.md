@@ -4,7 +4,7 @@
 
 [#2.l2vpn组件分层模块划分](#2l2vpn组件分层模块划分)
 
-[#3.L2VPN组件multihoming项目场景简介](#3L2VPN组件multihoming项目场景简介)
+[#3.L2VPN组件multihoming场景简介](#3L2VPN组件multihoming场景简介)
 
 [#4.l2vpn组件multihoming业务模块交互](#4l2vpn组件multihoming业务模块交互)
 
@@ -14,8 +14,8 @@
 # 2.L2VPN组件分层模块划分
 ![L2VPN组件分层模块划分](./picture/L2VPN组件分层模块划分.png)
 
-# 3.L2VPN组件multihoming项目场景简介
-![L2VPN组件multihoming项目场景简介](./picture/L2VPN组件multihoming项目场景简介.png)
+# 3.L2VPN组件multihoming场景简介
+![L2VPN组件multihoming场景简介](./picture/L2VPN组件multihoming场景简介.png)
 
 # 4.L2VPN组件multihoming业务模块交互
 ![L2VPN组件multihoming业务模块交互](./picture/L2VPN组件multihoming业务模块交互.png)
