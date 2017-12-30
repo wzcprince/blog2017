@@ -8,7 +8,9 @@
 
 [3.L2VPN组件multihoming场景简介](#3L2VPN组件multihoming场景简介)
 
-[4.l2vpn组件multihoming业务模块交互](#4l2vpn组件multihoming业务模块交互)
+[4.L2VPN组件multihoming报文格式](#4L2VPN组件multihoming报文格式)
+
+[5.l2vpn组件multihoming业务模块交互](#5l2vpn组件multihoming业务模块交互)
 
 # 1.NOS-VRP-大概层次模块划分
 ![NOS-VRP-分层模块划分](./picture/NOS-VRP-分层模块划分.png)
@@ -18,9 +20,11 @@
 
 # 3.L2VPN组件multihoming场景简介
 ![L2VPN组件multihoming场景简介](./picture/L2VPN组件multihoming场景简介.png)
-![L2VPN组件multihoming报文格式1](./picture/L2VPN组件multihoming报文格式1.png)
 
-# 4.L2VPN组件multihoming业务模块交互
+# 4.L2VPN组件multihoming报文格式
+![L2VPN组件multihoming报文格式](./picture/L2VPN组件multihoming报文格式1.png)
+
+# 5.L2VPN组件multihoming业务模块交互
 ![L2VPN组件multihoming业务模块交互](./picture/L2VPN组件multihoming业务模块交互.png)
 
 
