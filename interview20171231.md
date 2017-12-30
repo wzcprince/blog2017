@@ -1,12 +1,14 @@
 
 # 目录
-[#1.nos-vrp-大概层次模块划分](#1nos-vrp-大概层次模块划分)
+[简历](./resume2017.md)
 
-[#2.l2vpn组件分层模块划分](#2l2vpn组件分层模块划分)
+[1.nos-vrp-大概层次模块划分](#1nos-vrp-大概层次模块划分)
 
-[#3.L2VPN组件multihoming场景简介](#3L2VPN组件multihoming场景简介)
+[2.l2vpn组件分层模块划分](#2l2vpn组件分层模块划分)
 
-[#4.l2vpn组件multihoming业务模块交互](#4l2vpn组件multihoming业务模块交互)
+[3.L2VPN组件multihoming场景简介](#3L2VPN组件multihoming场景简介)
+
+[4.l2vpn组件multihoming业务模块交互](#4l2vpn组件multihoming业务模块交互)
 
 # 1.NOS-VRP-大概层次模块划分
 ![NOS-VRP-分层模块划分](./picture/NOS-VRP-分层模块划分.png)
