@@ -22,7 +22,7 @@
 ![L2VPN组件multihoming场景简介](./picture/L2VPN组件multihoming场景简介.png)
 
 # 4.L2VPN组件multihoming报文格式
-![L2VPN组件multihoming报文格式](./picture/L2VPN组件multihoming报文格式1.png)
+![L2VPN组件multihoming报文格式](./picture/L2VPN组件multihoming报文格式2.png)
 
 # 5.L2VPN组件multihoming业务模块交互
 ![L2VPN组件multihoming业务模块交互](./picture/L2VPN组件multihoming业务模块交互.png)
