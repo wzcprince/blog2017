@@ -22,6 +22,8 @@
 1. VM management
 2. Remote machine support
 3. Storage management
+4. Network interface management
+5. Virtual NAT and Route based networking
 
 
 ## 半虚拟化
