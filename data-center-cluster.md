@@ -5,6 +5,25 @@
 
 # 虚拟化
 
+## libvirt
+
+### 价值目标
+
+参见 <http://wiki.libvirt.org/page/FAQ#What_is_libvirt.3F>
+
+- provides a convenient way to manage virtual machines and other virtualization functionality, such as storage and network interface management.
+- to provide a single way to manage multiple different virtualization providers/hypervisors. 
+	- For example, the command 'virsh list --all' can be used to list the existing virtual machines **for any supported hypervisor (KVM, Xen, VMWare ESX, etc.)** No need to learn the hypervisor specific tools! 
+	- When people say they 'use libvirt', this usually means that they manage virtual machines using tools such as 'virsh', 'virt-manager', or 'virt-install', which are all built around libvirt functionality. They likely DO NOT directly use tools like 'xm' for Xen, or the qemu/qemu-kvm binary.
+
+### 主要功能
+参见 <http://wiki.libvirt.org/page/FAQ#What_is_some_of_the_major_functionality_provided_by_libvirt.3F>
+
+1. VM management
+2. Remote machine support
+3. Storage management
+
+
 ## 半虚拟化
 IO半虚拟化：虚拟设备队列VMDq技术解析-IT168 虚拟化专区
 http://virtual.it168.com/a2010/0126/843/000000843481_all.shtml
