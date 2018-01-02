@@ -18,7 +18,7 @@ http://support.huawei.com/huaweiconnect/enterprise/thread-161157.html
 
 ## 相同点
 [#三层转发二层交换共同点](#diff-l3-l2-the-same)**都是要转发报文，都是要把报文找个接口发出去！！**
-
+{#test1}
 ## 差异点
 ### 关心的报文里的字段不同
 
