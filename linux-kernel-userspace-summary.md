@@ -551,11 +551,17 @@ http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
 
 #### heredoc-format 
 
-Here document - Wikipedia
-https://en.wikipedia.org/wiki/Here_document#Unix_shells
+- Here document - Wikipedia
+<https://en.wikipedia.org/wiki/Here_document#Unix_shells>
 
 In computing, a here document (here-document, here-text, heredoc, hereis, here-string or here-script) is a file literal or input stream literal: it is a section of a source code file that is treated as if it were a separate file. The term is also used for a form of multiline string literals that use similar syntax, preserving line breaks and other whitespace (including indentation) in the text.
 Here documents originate in the Unix shell, and are found in sh, csh,[1] ksh, bash and zsh, among others.
+
+
+- linux - How does "cat << EOF" work in bash? - Stack Overflow
+<https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash>
+From man bash:Here Documents
+This type of redirection instructs the shell to read input from the current source until a line containing only word (with no trailing blanks) is seen.
 
 ##### 实例1
 7. Virtio_user for Container Networking — Data Plane Development Kit 18.02.0-rc0 documentation
