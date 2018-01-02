@@ -33,7 +33,17 @@
 Virtio - Libvirt Wiki
 https://wiki.libvirt.org/page/Virtio#Virtio
 
+### virtIO结合DPDK和容器
 
+7. Virtio_user for Container Networking — Data Plane Development Kit 18.02.0-rc0 documentation
+http://www.dpdk.org/doc/guides/howto/virtio_user_for_container_networking.html#figure-virtio-user-for-container-networking
+注意此图
+![](http://www.dpdk.org/doc/guides/_images/use_models_for_running_dpdk_in_containers.svg)
+#### slicing model
+slicing model切片模型其实就是Intel VT-d技术，VMDq技术
+在一个物理网卡上虚拟出多个Virtual Function来。
+#### aggregation model
+This page will only cover aggregation model.
 
 ## 半虚拟化
 IO半虚拟化：虚拟设备队列VMDq技术解析-IT168 虚拟化专区
