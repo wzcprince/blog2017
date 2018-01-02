@@ -27,11 +27,22 @@
 
 
 ## virtIO
+归类于 **半虚拟化** ★★★
 
+Written by Rusty Russell
 **Virtio is a virtualization standard for network and disk device drivers** where just the guest's device driver "knows" it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to get high performance network and disk operations, and gives most of the performance benefits of paravirtualization.
 
 Virtio - Libvirt Wiki
 https://wiki.libvirt.org/page/Virtio#Virtio
+
+(KVM连载)5.1.1 Virtio概述和基本原理（KVM半虚拟化驱动） – 笑遍世界
+http://smilejay.com/2012/11/virtio-overview/
+
+
+Virtio - KVM
+http://www.linux-kvm.org/page/Virtio
+
+http://www.linux-kvm.org/images/d/dd/KvmForum2007%24kvm_pv_drv.pdf
 
 ### virtIO结合DPDK和容器
 
