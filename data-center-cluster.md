@@ -37,6 +37,8 @@ https://docs.openstack.org/nova/latest/user/support-matrix.html
 http://www.cnblogs.com/sammyliu/p/4568188.html
 
 - KubeVirt与libvirt不同
+kubevirt/kubevirt: A virtualization API and runtime add-on for Kubernetes in order to define and manage virtual machines.
+https://github.com/kubevirt/kubevirt
 At its core, KubeVirt extends Kubernetes by adding additional virtualization resource types (especially the VM type) through Kubernetes's Custom Resource Definitions API. By using this mechanism, the Kubernetes API can be used to manage these VM resources alongside all other resources Kubernetes provides.
 
 
