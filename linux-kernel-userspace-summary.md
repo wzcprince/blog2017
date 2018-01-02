@@ -547,10 +547,16 @@ http://blog.csdn.net/dog250/article/details/17061537
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
 
-### 日志log journalctl
+### 日志log
 http://man7.org/linux/man-pages/man1/journalctl.1.html
+
 http://man7.org/linux/man-pages/man3/syslog.3.html
 
+技术|用系统日志了解你的 Linux 系统
+https://linux.cn/article-9150-1.html
+
+#### 后台进程-daemon-二进制格式-journalctl
+#### var-log-plain-text-format
 
 ### gdb
 
