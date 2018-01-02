@@ -25,6 +25,21 @@
 4. Network interface management
 5. Virtual NAT and Route based networking
 
+### 应用
+#### OpenStack用了libvirt
+
+
+参见
+- OpenStack Docs: Feature Support Matrix
+https://docs.openstack.org/nova/latest/user/support-matrix.html
+- https://www.libvirt.org/apps.html#iaas
+- KVM 介绍（6）：Nova 通过 libvirt 管理 QEMU/KVM 虚机 [Nova Libvirt QEMU/KVM Domain] - SammyLiu - 博客园
+http://www.cnblogs.com/sammyliu/p/4568188.html
+
+- KubeVirt与libvirt不同
+At its core, KubeVirt extends Kubernetes by adding additional virtualization resource types (especially the VM type) through Kubernetes's Custom Resource Definitions API. By using this mechanism, the Kubernetes API can be used to manage these VM resources alongside all other resources Kubernetes provides.
+
+
 
 ## virtIO
 归类于 **半虚拟化** ★★★
