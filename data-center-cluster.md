@@ -26,6 +26,15 @@
 5. Virtual NAT and Route based networking
 
 
+## virtIO
+
+**Virtio is a virtualization standard for network and disk device drivers** where just the guest's device driver "knows" it is running in a virtual environment, and cooperates with the hypervisor. This enables guests to get high performance network and disk operations, and gives most of the performance benefits of paravirtualization.
+
+Virtio - Libvirt Wiki
+https://wiki.libvirt.org/page/Virtio#Virtio
+
+
+
 ## 半虚拟化
 IO半虚拟化：虚拟设备队列VMDq技术解析-IT168 虚拟化专区
 http://virtual.it168.com/a2010/0126/843/000000843481_all.shtml
