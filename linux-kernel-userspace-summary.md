@@ -542,10 +542,31 @@ http://blog.csdn.net/dog250/article/details/17061537
 正如Linus所说，splice实际上是内核空间的read/write，而tee则是内核空间的memcpy，至于sendfile，它只是一种特定的优化，该优化对于可以使用page cache的文件系统有效。
 
 
-## 命令行技巧
+## CLI技巧
 
 最实用的 Linux 命令行使用技巧
 http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
+
+### shell
+
+#### heredoc-format 
+
+Here document - Wikipedia
+https://en.wikipedia.org/wiki/Here_document#Unix_shells
+
+In computing, a here document (here-document, here-text, heredoc, hereis, here-string or here-script) is a file literal or input stream literal: it is a section of a source code file that is treated as if it were a separate file. The term is also used for a form of multiline string literals that use similar syntax, preserving line breaks and other whitespace (including indentation) in the text.
+Here documents originate in the Unix shell, and are found in sh, csh,[1] ksh, bash and zsh, among others.
+
+##### 实例1
+7. Virtio_user for Container Networking — Data Plane Development Kit 18.02.0-rc0 documentation
+http://www.dpdk.org/doc/guides/howto/virtio_user_for_container_networking.html
+cat <<EOT >> Dockerfile
+FROM ubuntu:latest
+WORKDIR /usr/src/dpdk
+COPY . /usr/src/dpdk
+ENV PATH "$PATH:/usr/src/dpdk/x86_64-native-linuxapp-gcc/app/"
+EOT
+
 
 ### 日志log
 http://man7.org/linux/man-pages/man1/journalctl.1.html
