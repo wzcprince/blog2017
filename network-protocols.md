@@ -16,6 +16,9 @@ ARP请求就是广播帧
 一个报文的路由器之旅-(9) 二层桥接转发流程
 http://support.huawei.com/huaweiconnect/enterprise/thread-161157.html  
 
+## 相同点
+**都是要转发报文，都是要把报文找个接口发出去！！**
+
 ## 差异点
 三层转发时，路由器里的路由表里的路由表项可以是来自其他network的IP地址，
 体现了**inter**network
