@@ -48,38 +48,28 @@ pthread_t arr_thread[thread_count];
 
 int main(int argc, char **argv)
 {
-	static pthread_key_t thread_key1;
     void* result = NULL;
     
-	pthread_key_create (&thread_key1, NULL);  
-
-	/* 测试一下 pthread_self 的返回值就是TCB地址 也就是 fs:0 的值 */
-	unsigned int b = 0;  
-	asm volatile("movl %%fs:0,%0"  
-		:"=r"(b)  /* output */      
-		);
-	printf ("pthread_self() == 0x%x\nfs:0 == 0x%x\n", (unsigned int)pthread_self(), b );
-
+	printf ("stage 1 main thread create slave threads \n");
     for (int i = 0; i<thread_count; i++)
     {
         pthread_create(arr_thread + i, NULL, new_thread_routine, NULL);
     }
     
-	printf ("main thread sleeping\n");
+	printf ("stage 2 main thread sleeping\n");
     sleep_second(15);
 
-	printf ("main thread start pthread_join\n");
+	printf ("stage 3 main thread start pthread_join\n");
     
     for (int i = 0; i<thread_count; i++)
     {
         pthread_join(arr_thread[i], &result);
     }
 
-	printf ("main thread end pthread_join\n");
+	printf ("stage 4 main thread end pthread_join and sleep again\n");
     sleep_second(15);    
     
-	printf ("main thread's static_tls %p\n", (void *)static_tls );
-	printf ("new  thread's static_tls %p\n", (void *)result );
+	printf ("stage 5 main thread exit\n");
 
 	
 }
