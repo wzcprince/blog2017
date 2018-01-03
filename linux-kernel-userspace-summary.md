@@ -405,6 +405,15 @@ txq = netdev_pick_tx(dev, skb, accel_priv);
 __qdisc_run(struct Qdisc *q)是个很重要的函数，他的两个调用者也很重要！！！
 
 
+
+## bridge
+使用ioctl用户态内核态通信接口创建的哟
+
+可以参考一下，不过水平不高
+Linux下的虚拟Bridge实现 - jianchaolv的专栏 - CSDN博客
+http://m.blog.csdn.net/jianchaolv/article/details/25777249
+
+
 ## packet_mmap接口/机制
 
 参见 https://blog.cloudflare.com/kernel-bypass/
@@ -441,13 +450,15 @@ https://lwn.net/Articles/232575/
 ## NetMap
 
 参见 https://blog.cloudflare.com/kernel-bypass/
-重要观点：
+重要观点
+
 - Netmap is also a rich framework, but as opposed to UIO techniques it is implemented as a couple of kernel modules. 
 - 2
 
 
 http://info.iet.unipi.it/~luigi/netmap/
 关键点：
+
 - netmap is a framework for high speed packet I/O. 
 - netmap supports access to network cards (NICs), host stack, virtual ports (the "VALE" switch), and "netmap pipes". 
 -  It can easily reach line rate on 10G NICs (14.88 Mpps), over 30 Mpps on 40G NICs (limited by the NIC's hardware), over 20 Mpps on VALE ports, and over 100 Mpps on netmap pipes. 
@@ -463,10 +474,15 @@ http://info.iet.unipi.it/~luigi/netmap/
 
 
 https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
-     netmap is a framework for extremely fast and efficient packet I/O for both userspace and kernel clients.	 
-     It runs on FreeBSD and	Linux, and includes 
-	     - VALE, a very fast	and modular in-kernel software switch/data-plane, and	
-	     - netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
+
+- netmap is a framework for extremely fast and efficient packet I/O for both userspace and kernel clients.	 
+- It runs on FreeBSD and	Linux, and includes 
+	- VALE, a very fast	and modular in-kernel software switch/data-plane, and	
+	- netmap pipes, a	shared memory packet transport channel.	 All these are accessed interchangeably	with ithe same API.
+
+
+
+
 
 
 
@@ -509,6 +525,31 @@ glibc的TCB结构体名称就是 struct pthread
 
 和线程用户态栈放在一起，参见函数 [allocate_stack](#allocate_stack) 
 
+
+##### THREAD_SELF
+
+	# define THREAD_SELF \
+	({ struct pthread *__self;                              \
+    asm ("movl %%gs:%c1,%0"	\ 
+	  : "=r" (__self)                      \
+      : "i" (offsetof (struct pthread, header.self)));              \
+    __self;})
+
+- %c1和%0都是序号占位符
+- "=r" 其中=表示只写，r表示使用一个通用寄存器
+- "i"表示立即数
+
+参见： 汇编语言---GCC内联汇编 - taek - 博客园 【哎哟，写的不全啊】
+http://www.cnblogs.com/taek/archive/2012/02/05/2338838.html
+
+- 二、带有C/C++表达式的内联汇编
+	- 1.带有C/C++表达式的内联汇编语句的格式:__asm__ [__volatile__]("instruction list":Output:Input:Clobber/Modify);
+
+	- 2.Output:用双引号括起来的部分就是C/C++表达式,它用于保存当前内联汇编语句的一个输出值
+- 三、操作约束:Operation Constraint
+操作约束只会出现在带有C/C++表达式的内联汇编语句中;
+
+
 ### Thread Local Storage 
 
 #### 静态TLS
@@ -516,6 +557,14 @@ glibc的TCB结构体名称就是 struct pthread
 D:\!learn\code\glibc\glibc-2.23\csu\errno.c中 __thread int errno;
 #### 动态TLS
 pthread_key_create (&thread_key1, NULL); 创建的是动态TLB
+
+
+### 多线程同步
+
+2.1：pthread mutex和semaphore的重大区别
+（来自程序员自我修养P26）
+mutex是哪个线程获取到的就要那个线程释放这个锁
+semaphore可以被任意线程获取或者释放
 
 
 ### CPU affinity
@@ -530,6 +579,7 @@ http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353215.html
 CPU isolation 把某个CPU核从linux scheduler中剔除
 
 #### 中断的CPU affinity
+
 
 ### 试验
 #### 测试TCB和TLS
@@ -574,6 +624,7 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 	printf ("stage 4 main thread end pthread_join and sleep again\n");
 	sleep_second(15); 
 
+
 #### pthread_create
 
 注意，线程有两个栈，内核线程栈和用户态线程栈
@@ -584,7 +635,7 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 
 	
 	/* Copy the thread attribute flags.  */
-	// 太坑爹的名字了 self = THREAD_SELF实际是caller thread的！！！
+	// 太坑爹的名字了 self = THREAD_SELF 实际是caller thread的！！！
 	// 并不是新创建的线程的！！！
 	struct pthread *self = THREAD_SELF;
 	pd->flags = ((iattr->flags & ~(ATTR_FLAG_SCHED_SET | ATTR_FLAG_POLICY_SET))
@@ -605,21 +656,36 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 - case 2 用 list_head stack_cache 中的【无处不在的cache机制】
 - case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
 	- 注意 COLORING_INCREMENT 宏，在[#slab_coloring](#slab_coloring)中有类似机制
+	- 。
+
+haha
+
+    mem = mmap (NULL, size, prot, MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, -1, 0);
+    。
+    pd = (struct pthread *) ((char *) mem + size - coloring) - 1; 
+    。
+    /* Remember the stack-related values.  */
+    pd->stackblock = mem;
+    pd->stackblock_size = size;
+    /* We allocated the first block thread-specific data array.
+    	This address will not change for the lifetime of this
+    	descriptor.  */
+    pd->specific[0] = pd->specific_1stblock;
+    
+#### 对比进程第一个线程即主线程和其他线程的创建
+weak_alias (__libc_fork, fork)
+__libc_fork 
 
 
-	
-	mem = mmap (NULL, size, prot,
-				MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, -1, 0);
-	...
-	pd = (struct pthread *) ((char *) mem + size - coloring) - 1; 
-	...
-	/* Remember the stack-related values.  */
-	pd->stackblock = mem;
-	pd->stackblock_size = size;
-	/* We allocated the first block thread-specific data array.
-	 This address will not change for the lifetime of this
-	 descriptor.  */
-	pd->specific[0] = pd->specific_1stblock;
+#### libc初始化时会初始化进程主线程的TLS
+
+- __libc_setup_tls (size_t tcbsize, size_t tcbalign)
+	- const char *lossage = TLS_INIT_TP ((char *) tlsblock + tcb_offset);
+		- 以**i386**的 #define TLS_INIT_TP(thrdescr) 为例 D:\!learn\code\glibc\glibc-2.23\sysdeps\i386\nptl\tls.h
+		- _head->tcb = _thrdescr;
+		- _head->self = _thrdescr;
+		- TLS_SET_GS (_segdescr.desc.entry_number * 8 + 3);
+end
 
 
 ## 虚拟化专题
