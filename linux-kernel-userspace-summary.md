@@ -511,6 +511,7 @@ CPU isolation 把某个CPU核从linux scheduler中剔除
 ### 试验
 #### 测试TCB和TLS
 
+[test_thread_tcb_tls.c](./res/test_thread_tcb_tls.c)
 
 
 
