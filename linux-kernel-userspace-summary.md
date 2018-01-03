@@ -443,6 +443,8 @@ https://lwn.net/Articles/232575/
 参见 https://blog.cloudflare.com/kernel-bypass/
 重要观点：
 - Netmap is also a rich framework, but as opposed to UIO techniques it is implemented as a couple of kernel modules. 
+- 2
+
 
 http://info.iet.unipi.it/~luigi/netmap/
 关键点：
@@ -496,6 +498,7 @@ fdisk工具可以修改partition table中的记录的active flag
 ### Thread Control Block
 
 glibc的TCB结构体名称就是 struct pthread
+
 	struct pthread
 	{
 	  union
@@ -503,6 +506,7 @@ glibc的TCB结构体名称就是 struct pthread
 	#if !TLS_DTV_AT_TP
 	    /* This overlaps the TCB as used for TLS without threads (see tls.h).  */
 	    tcbhead_t header; // 16 * 4
+
 和线程用户态栈放在一起，参见函数 [allocate_stack](#allocate_stack) 
 
 ### Thread Local Storage 
@@ -576,10 +580,29 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 
 - __pthread_create_2_1 
 	- 线程的用户态栈allocate_stack 
+	- 坑爹的一段代码
+
+	
+	/* Copy the thread attribute flags.  */
+	// 太坑爹的名字了 self = THREAD_SELF实际是caller thread的！！！
+	// 并不是新创建的线程的！！！
+	struct pthread *self = THREAD_SELF;
+	pd->flags = ((iattr->flags & ~(ATTR_FLAG_SCHED_SET | ATTR_FLAG_POLICY_SET))
+	       | (self->flags & (ATTR_FLAG_SCHED_SET | ATTR_FLAG_POLICY_SET)));
+	
+	/* Initialize the field for the ID of the thread which is waiting
+	 for us.  This is a self-reference in case the thread is created
+	 detached.  */
+	pd->joinid = iattr->flags & ATTR_FLAG_DETACHSTATE ? pd : NULL;
+	
+	/* The debug events are inherited from the parent.  */
+	pd->eventbuf = self->eventbuf;
+
+
 #### allocate_stack
 
 - case 1 pthread_attr::flags & ATTR_FLAG_STACKADDR 调用者已经分配好了
-- case 2 用 list_head stack_cache 中的
+- case 2 用 list_head stack_cache 中的【无处不在的cache机制】
 - case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
 	- 注意 COLORING_INCREMENT 宏，在[#slab_coloring](#slab_coloring)中有类似机制
 
