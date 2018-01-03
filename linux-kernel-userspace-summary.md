@@ -511,6 +511,7 @@ CPU isolation 把某个CPU核从linux scheduler中剔除
 ### 试验
 #### 测试TCB和TLS
 
+gcc test_thread_tcb_tls.c -g -lpthread -o test_thread_tcb_tls 
 [test_thread_tcb_tls.c](./res/test_thread_tcb_tls.c)
 
 
@@ -591,6 +592,11 @@ WORKDIR /usr/src/dpdk
 COPY . /usr/src/dpdk
 ENV PATH "$PATH:/usr/src/dpdk/x86_64-native-linuxapp-gcc/app/"
 EOT
+
+
+### daemon
+#### systemctl
+
 
 
 ### 日志log
