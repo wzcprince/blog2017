@@ -193,6 +193,8 @@ to the slabs.
 Coloring essentially leads to moving some of the free area of the slab from the end to the beginning.
 ![](http://p14ws25od.bkt.clouddn.com/201712291648_167.png)
 
+在glibc中也有类似机制，可以搜索glibc代码 COLORING_INCREMENT 或者 allocate_stack(...)
+
 # 内存
 
 ## mmap【太重要了】
@@ -559,7 +561,15 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 	printf ("stage 4 main thread end pthread_join and sleep again\n");
 	sleep_second(15); 
 
+#### pthread_create
 
+注意，线程有两个栈，内核线程栈和用户态线程栈
+
+- __pthread_create_2_1 
+	- 线程的用户态栈allocate_stack 
+		- case 1 pthread_attr::flags & ATTR_FLAG_STACKADDR 调用者已经分配好了
+		- case 2 用 list_head stack_cache 中的
+		- case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
 
 ## 虚拟化专题
 
