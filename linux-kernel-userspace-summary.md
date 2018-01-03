@@ -515,6 +515,41 @@ gcc test_thread_tcb_tls.c -g -lpthread -o test_thread_tcb_tls
 [test_thread_tcb_tls.c](./res/test_thread_tcb_tls.c)
 
 
+pthread_create(3) - Linux manual page
+<http://man7.org/linux/man-pages/man3/pthread_create.3.html>
+pthread_join(3) - Linux manual page
+<http://man7.org/linux/man-pages/man3/pthread_join.3.html>
+
+#### 僵尸线程
+和僵尸进程类似，也有僵尸线程
+gcc  test_thread_zombie.c -g -lpthread -o test_thread_zombie
+[test_thread_zombie.c](./res/test_thread_zombie.c)
+ps -aux | grep  test_thread_zombie | grep -v grep | awk '{print $2}' | xargs pmap
+
+stage 2 main thread sleeping的时候
+pmap命令行的结果是大量的线程占用了进程大量的虚拟地址空间
+
+而stage 4 main thread end pthread_join and sleep again的时候
+pmap命令行的结果就是很干净了，内存就都被释放啦
+	
+	printf ("stage 1 main thread create slave threads \n");
+	for (int i = 0; i<thread_count; i++)
+	{
+	    pthread_create(arr_thread + i, NULL, new_thread_routine, NULL);
+	}
+	
+	printf ("stage 2 main thread sleeping\n");
+	sleep_second(15);
+	
+	printf ("stage 3 main thread start pthread_join\n");
+	
+	for (int i = 0; i<thread_count; i++)
+	{
+	    pthread_join(arr_thread[i], &result);
+	}
+	
+	printf ("stage 4 main thread end pthread_join and sleep again\n");
+	sleep_second(15); 
 
 
 
