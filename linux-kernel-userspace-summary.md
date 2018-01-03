@@ -181,7 +181,7 @@ cache line bouncing 和 MAC flapping
 ### MCS
 参见 [#mcs自旋锁好牛叉](#mcs自旋锁好牛叉)
 
-### slab coloring
+### slab_coloring
 ULK 8.2.10 slab coloring机制用来解决cache line bouncing问题
 Objects that have the same offset within different slabs will, with a relatively high
 probability, end up mapped in the same cache line. The cache hardware might therefore waste
@@ -570,6 +570,8 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 		- case 1 pthread_attr::flags & ATTR_FLAG_STACKADDR 调用者已经分配好了
 		- case 2 用 list_head stack_cache 中的
 		- case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
+			- 注意 COLORING_INCREMENT 宏，在[#slab_coloring](#slab_coloring)中有类似机制
+
 
 ## 虚拟化专题
 
