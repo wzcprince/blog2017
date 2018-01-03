@@ -2,14 +2,6 @@
 [TOC]
 
 # 用户态
-## 进程虚拟地址空间
-### malloc()的glibc实现
-malloc也有buddy scheme
-参见 Linux System Programming 2nd Edition P308 Section Anonymous Memory Mappings
-**学习一下malloc的glibc实现，很牛叉的哟 **
-
-#### buddy memory allocation scheme
-
 ## VFS Interface【至关重要】
 ### VFS是极为重要的接口，不要老想着那一坨API
 
@@ -152,6 +144,19 @@ The basic idea behind RCU is to split updates into "removal" and "reclamation" p
 #### 降低普通自旋锁cache line bouncing问题
 Linux同步机制--MCS自旋锁 | Just another kernel n00b
 http://larmbr.com/2014/07/26/mcs-spinlock/
+
+
+
+## 进程虚拟地址空间
+### malloc()的glibc实现
+malloc也有buddy scheme
+参见 Linux System Programming 2nd Edition P308 Section Anonymous Memory Mappings
+**学习一下malloc的glibc实现，很牛叉的哟 **
+
+#### buddy memory allocation scheme
+
+
+
 
 
 
@@ -478,11 +483,17 @@ fdisk工具可以修改partition table中的记录的active flag
 
 ## 多线程
 
+### Thread Control Block
+
+
 ### Thread Local Storage 
 
+#### 静态TLS
 2017年10月19日 GCC支持静态TLS变量： 
 D:\!learn\code\glibc\glibc-2.23\csu\errno.c中 __thread int errno;
+#### 动态TLS
 pthread_key_create (&thread_key1, NULL); 创建的是动态TLB
+
 
 ### CPU affinity
 #### 线程的CPU affinity 线程绑核
@@ -496,6 +507,13 @@ http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353215.html
 CPU isolation 把某个CPU核从linux scheduler中剔除
 
 #### 中断的CPU affinity
+
+### 试验
+#### 测试TCB和TLS
+
+
+
+
 
 
 ## 虚拟化专题
