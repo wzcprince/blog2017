@@ -193,7 +193,7 @@ to the slabs.
 Coloring essentially leads to moving some of the free area of the slab from the end to the beginning.
 ![](http://p14ws25od.bkt.clouddn.com/201712291648_167.png)
 
-在glibc中也有类似机制，可以搜索glibc代码 COLORING_INCREMENT 或者 allocate_stack(...)
+在glibc中也有类似机制，参见[pthread_create](#pthread_create)
 
 # 内存
 
@@ -495,6 +495,15 @@ fdisk工具可以修改partition table中的记录的active flag
 
 ### Thread Control Block
 
+glibc的TCB结构体名称就是 struct pthread
+	struct pthread
+	{
+	  union
+	  {
+	#if !TLS_DTV_AT_TP
+	    /* This overlaps the TCB as used for TLS without threads (see tls.h).  */
+	    tcbhead_t header; // 16 * 4
+和线程用户态栈放在一起，参见函数 [allocate_stack](#allocate_stack) 
 
 ### Thread Local Storage 
 
@@ -567,10 +576,27 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 
 - __pthread_create_2_1 
 	- 线程的用户态栈allocate_stack 
-		- case 1 pthread_attr::flags & ATTR_FLAG_STACKADDR 调用者已经分配好了
-		- case 2 用 list_head stack_cache 中的
-		- case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
-			- 注意 COLORING_INCREMENT 宏，在[#slab_coloring](#slab_coloring)中有类似机制
+#### allocate_stack
+
+- case 1 pthread_attr::flags & ATTR_FLAG_STACKADDR 调用者已经分配好了
+- case 2 用 list_head stack_cache 中的
+- case 3 mmap MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK
+	- 注意 COLORING_INCREMENT 宏，在[#slab_coloring](#slab_coloring)中有类似机制
+
+
+	
+	mem = mmap (NULL, size, prot,
+				MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, -1, 0);
+	...
+	pd = (struct pthread *) ((char *) mem + size - coloring) - 1; 
+	...
+	/* Remember the stack-related values.  */
+	pd->stackblock = mem;
+	pd->stackblock_size = size;
+	/* We allocated the first block thread-specific data array.
+	 This address will not change for the lifetime of this
+	 descriptor.  */
+	pd->specific[0] = pd->specific_1stblock;
 
 
 ## 虚拟化专题
