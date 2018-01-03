@@ -156,6 +156,14 @@ malloc也有buddy scheme
 #### buddy memory allocation scheme
 
 
+## zombie
+僵尸进程 父进程没有wait()它创建的子进程
+而父进程一直在长时间执行，
+
+## orphan
+父进程提前结束，则会被 init进程收养，init进程会循环地wait()这些orphan，所以orphan并没有什么危害
+注意和zombie的差别
+
 
 
 
@@ -629,8 +637,36 @@ ENV PATH "$PATH:/usr/src/dpdk/x86_64-native-linuxapp-gcc/app/"
 EOT
 
 
-### daemon
+### systemd
+
+systemd System and Service Manager
+和init一样PID=1
+注意哟，**systemd也是linux系统启动过程中重要的一部分**
+
+源代码： <https://github.com/systemd/systemd>
+官方wiki <https://www.freedesktop.org/wiki/Software/systemd/>
+
+浅析 Linux 初始化 init 系统，第 3 部分: Systemd
+<https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html>
+
+The Story Behind 'init' and 'systemd': Why 'init' Needed to be Replaced with 'systemd' in Linux
+<https://www.tecmint.com/systemd-replaces-init-in-linux/>
+
+
+
+#### systemd关键点
+- PID=1
+- 强调spelling必须是 systemd
+- aggressive parallelization capabilities**并行化大大加速了linux系统启动过程**
+- 使用control groups即cgroup实现进程追踪和生命周期管理
+	- CGroup 提供了类似文件系统的接口，使用方便。当进程创建子进程时，子进程会继承父进程的 CGroup。因此无论服务如何启动新的子进程，所有的这些相关进程都会属于同一个 CGroup，systemd 只需要简单地遍历指定的 CGroup 即可正确地找到所有的相关进程，将它们一一停止即可。
+- 如果所有的 Linux 发行版都采纳了 systemd，那么系统管理任务便可以很大程度上实现标准化。
+- 未完待续
+
+
 #### systemctl
+
+
 
 
 
