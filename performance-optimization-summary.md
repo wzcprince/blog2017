@@ -39,7 +39,8 @@
 
 
 
-----------
+
+
 
 # 重要特性列表
 
@@ -76,3 +77,24 @@ SIMD单指令多数据优化内存拷贝效率
 ### LPM库
 ### RING库
 ### Elastic Flow Distributor 
+
+
+
+
+
+
+
+
+
+
+
+
+# 典型项目
+## dpdk
+
+## ZeroMQ
+大型网站架构之分布式消息队列 5.3 ZeroMQ
+http://blog.csdn.net/shaobingj126/article/details/50585035#t18
+
+
+
