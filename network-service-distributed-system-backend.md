@@ -143,6 +143,10 @@ http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250db
 
 # kubernetes
 
+Kubernetes Documentation | Kubernetes
+<https://kubernetes.io/docs/home/>
+
+
 十分钟带你理解Kubernetes核心概念 - DockOne.io
 <http://dockone.io/article/932>
 
@@ -151,10 +155,47 @@ http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250db
 
 <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes>
 Kubernetes is an open-source platform designed to automate deploying, scaling, and operating application containers.
-我理解就是在cluster上玩转容器，container 可以是 docker 也可以是 Rocket 
+我理解就是在cluster上玩转容器，
+cluster就是一组Node，每个Node可以是物理机或者虚拟机
+container 可以是 docker 也可以是 Rocket 
 
 What Kubernetes is not
 - **Does not provide middleware (e.g., message buses), data-processing frameworks (for example, Spark), databases (e.g., mysql), nor cluster storage systems (e.g., Ceph) as built-in services. Such applications run on Kubernetes**.
+
+
+## kubernetes核心要素
+从大到小
+### cluster
+Node组成的集群
+
+### Master Node
+#### API server
+REST端点
+
+Kubernetes API
+<https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-kubernetes-api>
+The API allows configuration to be managed in a declarative way. Users can interact with the Kubernetes API directly, or via tools like kubectl. 
+
+#### Replication Controller
+
+#### Service
+<https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-service>
+
+An API object that describes how to access applications, such as a set of Pods, and can describe ports and load-balancers.
+The access point can be internal or external to the cluster.
+
+
+
+### Minion
+参见Standardized Glossary | Kubernetes
+<https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-node>
+['mɪnɪən] n. 宠儿；宠臣；部下；奴才 n. 小黄人（卡通角色）
+Kubernetes worker Node 
+
+#### Pod
+The smallest and simplest Kubernetes object. A Pod represents a set of running containers on your cluster.
+
+#### Label
 
 
 
