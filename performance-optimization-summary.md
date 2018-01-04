@@ -93,8 +93,12 @@ SIMD单指令多数据优化内存拷贝效率
 ## dpdk
 
 ## ZeroMQ
-大型网站架构之分布式消息队列 5.3 ZeroMQ
-http://blog.csdn.net/shaobingj126/article/details/50585035#t18
+参见
+<https://github.com/wzcprince/blog2017/blob/master/network-service-distributed-system-backend.md#zeromq>
 
+## Firefox多核优化
+Firefox是如何充分利用硬件性能恢复极速的？
+https://mp.weixin.qq.com/s/upjyzPhmoF0kSrWKyJ3eFQ
 
+细粒度 并行 多核 相通  
 

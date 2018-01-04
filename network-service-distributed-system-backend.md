@@ -94,24 +94,69 @@ grpc协议，序列化方法是protobuf，传输协议基于HTTP2。
 MQ，互联网架构解耦神器
 <http://mp.weixin.qq.com/s?src=11&timestamp=1514986944&ver=614&signature=AKm8LQcHAIlxUi-rz-UzN4bFxchLaPKwl*Wa02maXwRMCMA13Ms55P0D9h5lVx8MHr1zDzM5HdANcmMjf-4FSAnyku5NOKmSXIMRwSrBNRdpgHMFz8rXdcI6dUXPcVkQ&new=1>
 
+大型网站架构之分布式消息队列  http://blog.csdn.net/shaobingj126/article/details/50585035
+
+大型网站架构系列：分布式消息队列（一） - ITFLY8架构师之家 - 博客园
+http://www.cnblogs.com/itfly8/p/5155983.html
+大型网站架构系列：消息队列（二） - ITFLY8架构师之家 - 博客园
+http://www.cnblogs.com/itfly8/p/5156155.html
 
 ### 两种模式
-
-https://en.wikipedia.org/wiki/Java_Message_Service#Models
-The JMS API supports two models:
-Point-to-point
-Publish and subscribe
-
 #### 点对点模式
 #### 发布订阅模式
 
 
+### 典型项目
+
+#### ZeroMQ
+
+大型网站架构之分布式消息队列 5.3 ZeroMQ
+<http://blog.csdn.net/shaobingj126/article/details/50585035#t18>
+
+ZMQ并不像是一个传统意义上的消息队列服务器，事实上，它也根本不是一个服务器，更像一个底层的网络通讯库，在Socket API之上做了一层封装，将网络通讯、进程通讯和线程通讯抽象为统一的API接口。支持“Request-Reply “，”Publisher-Subscriber“，”Parallel Pipeline”三种基本模型和扩展模型。
 
 
 # Web服务
 
 What really happens when you navigate to a URL:
 http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250dbd02fa161b6d076d7650c92f2&scene=2&from=timeline&isappinstalled=0#rd
+
+
+
+
+
+# container
+
+区分docker和容器哟，docker只是容器的一种而已，Rocket也是容器
+
+容器的好处 <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-containers>
+
+## docker
+
+
+十分钟万台服务器部署能力，探秘阿里双十一弹性扩容背后的技术故事
+<https://mp.weixin.qq.com/s/55PNpRXS8dgHNs5XiNHAKA>
+
+## rocket
+
+
+
+# kubernetes
+
+十分钟带你理解Kubernetes核心概念 - DockOne.io
+<http://dockone.io/article/932>
+
+## kubernetes是什么
+源自希腊语 飞行员或者船舵手的意思，简称K8S
+
+<https://kubernetes.io/docs/concepts/overview/what-is-kubernetes>
+Kubernetes is an open-source platform designed to automate deploying, scaling, and operating application containers.
+我理解就是在cluster上玩转容器，container 可以是 docker 也可以是 Rocket 
+
+What Kubernetes is not
+- **Does not provide middleware (e.g., message buses), data-processing frameworks (for example, Spark), databases (e.g., mysql), nor cluster storage systems (e.g., Ceph) as built-in services. Such applications run on Kubernetes**.
+
+
 
 
 # serverless 
