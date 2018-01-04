@@ -131,12 +131,18 @@ http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250db
 
 容器的好处 <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-containers>
 
-## docker
+### container核心理念价值-解耦
 
+container 是 new model of deployment
+kubernetes之所以能 “automates the distribution and scheduling of application containers **across a cluster** in a more efficient way”，就是因为**Containerized applications** are packaged and **decoupled from individual host**
+参见 <https://kubernetes.io/docs/tutorials/kubernetes-basics/cluster-intro/>
+
+
+
+## docker
 
 十分钟万台服务器部署能力，探秘阿里双十一弹性扩容背后的技术故事
 <https://mp.weixin.qq.com/s/55PNpRXS8dgHNs5XiNHAKA>
-
 
 ### docker用namespace
 <https://docs.docker.com/engine/docker-overview/#namespaces>
