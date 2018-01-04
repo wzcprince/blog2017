@@ -96,6 +96,12 @@ MQ，互联网架构解耦神器
 
 
 ### 两种模式
+
+https://en.wikipedia.org/wiki/Java_Message_Service#Models
+The JMS API supports two models:
+Point-to-point
+Publish and subscribe
+
 #### 点对点模式
 #### 发布订阅模式
 
