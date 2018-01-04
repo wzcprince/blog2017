@@ -235,6 +235,10 @@ SDN流量调优技术对整网流量监控并实时调整，实现链路间的�
 
 # 文章、帖子收集
 
+## 数据中心SDN技术发展应用之MP-BGP
+<https://mp.weixin.qq.com/s/cKoTi9hJD_QHWhS6d2koVA>
+EVPN Vxlan SDN技术用来构建DataCenter网络 
+
 
 ##  从25G到100G-阿里数据中心网络架构设计分享
 阿里巴巴技术保障部高级网络专家曹捷
@@ -390,4 +394,5 @@ https://www.zhihu.com/question/24993531
 
 
 ## 华为云数据中心
+参见 为知笔记 华为-云数据中心解决方案
 http://e.huawei.com/cn/solutions/business-needs/data-center/datacenter

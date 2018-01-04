@@ -137,8 +137,29 @@ http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250db
 十分钟万台服务器部署能力，探秘阿里双十一弹性扩容背后的技术故事
 <https://mp.weixin.qq.com/s/55PNpRXS8dgHNs5XiNHAKA>
 
+
+### docker用namespace
+<https://docs.docker.com/engine/docker-overview/#namespaces>
+
+
+
 ## rocket
 
+
+## 技术趋势
+
+1.2017是容器之年？不，也许2018年才是！
+<https://mp.weixin.qq.com/s/kbKnVCegGSLME2N_B60flQ>
+Linux基金会 开放容器标准（OCI） OCI标准
+
+
+> 因为相比一个非常复杂的OpenStack环境，它确实更容易在裸金属环境中创建。
+> 本月初（2017年12月份）亚马逊声称裸金属将作为一个服务，也就有了很明确的原因，他说：“我们知道亚马逊是最听客户话的。”
+
+**也就是说让docker直接跑在 bare metal上，整个系统看起来会更简单，要避免OpenStack，它太复杂了**
+
+
+2.
 
 
 # kubernetes

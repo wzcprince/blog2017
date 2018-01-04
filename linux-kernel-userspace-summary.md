@@ -166,6 +166,40 @@ malloc也有buddy scheme
 
 
 
+## cgroup-control-group
+
+https://www.kernel.org/doc/Documentation/cgroups/cgroups.txt 
+	
+	root@ubuntu:/opt/code/debug-dpdk# ll /sys/fs/cgroup/
+	total 0
+	drwxr-xr-x 14 root root 360 Dec 14 16:46 ./
+	drwxr-xr-x  8 root root   0 Dec 14 16:46 ../
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 blkio/
+	lrwxrwxrwx  1 root root  11 Dec 14 16:46 cpu -> cpu,cpuacct/
+	lrwxrwxrwx  1 root root  11 Dec 14 16:46 cpuacct -> cpu,cpuacct/
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 cpu,cpuacct/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 cpuset/
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 devices/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 freezer/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 hugetlb/
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 memory/
+	lrwxrwxrwx  1 root root  16 Dec 14 16:46 net_cls -> net_cls,net_prio/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 net_cls,net_prio/
+	lrwxrwxrwx  1 root root  16 Dec 14 16:46 net_prio -> net_cls,net_prio/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 perf_event/
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 pids/
+	dr-xr-xr-x  2 root root   0 Dec 14 16:46 rdma/
+	dr-xr-xr-x  5 root root   0 Dec 14 16:46 systemd/
+
+
+
+### cgroup应用
+
+- docker
+- systemd用cgroup跟踪进程父子关系树
+
+
+
 
 
 
