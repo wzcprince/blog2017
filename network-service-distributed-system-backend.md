@@ -31,6 +31,25 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 Cloud-Native | Pivotal
 <https://pivotal.io/cloud-native>
 
+- 再见MME…5G核心网你彻底变了！ | SDNLAB | 专注网络创新技术
+<http://www.sdnlab.com/19818.html >
+	- SOA
+	- Cloud Native
+		- 微服务
+		- container
+		- 敏捷
+		- DevOps
+	- 5G网络毫秒级时延的KPI
+		- 内容下沉和分布式的部署于接入网侧（边缘数据中心），使之更接近用户，降低时延和网络回传负荷
+	- 网络切片 slicing
+		- 5G要像一把瑞士军刀一样，多功能满足差异化的网络服务。
+			- 工业自动化要求低时延、高可靠但对数据速率要求不高
+			- 高清视频无需超低时延但要求超高速率
+			- 一些大规模物联网不需要切换，部分移动性管理对之而言是信令浪费等等
+		- Qos不同
+
+
+
 ## cloud-native定义
 
 Organizations require a platform
@@ -46,6 +65,19 @@ Microservices | Pivotal
 
 Microservices refers to an architectural approach that independent teams use to prioritize the continuous delivery of single-purpose services. 
 The microservices model is **the opposite of traditional monolithic software** which consists of tightly integrated modules that ship infrequently and have to scale as a single unit. 
+
+
+
+
+# SOA
+Service Oriented Architecture
+也有叫SBA的， Service Based Architecture
+
+SOA和cloud-native是什么关系？
+
+
+
+
 
 
 
