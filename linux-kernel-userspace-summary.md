@@ -163,11 +163,31 @@ https://linux.cn/article-9150-1.html
 #### var-log-plain-text-format
 
 
+## custom-core-dump-file
+
+Linux 信号应用之黑匣子程序设计 - 文章 - 伯乐在线
+<http://blog.jobbole.com/101619/>
+
+- 默认是进程的整个虚拟地址空间，为什么要自定义呢？
+	- 64位的时候太大啦，太浪费磁盘空间了
+	- 也影响系统性能
+	- 安全，比如coredump文件中可能保存着密码
+	- 参见 Core dump - ArchWiki
+<https://wiki.archlinux.org/index.php/Core_dump#Disabling_automatic_core_dumps>
 
 
-
-
-
+## gdb-manually-make-coredump
+Core dump - ArchWiki
+<https://wiki.archlinux.org/index.php/Core_dump#Making_a_core_dump>
+找到目标进程
+	$ pgrep -f firefox
+	2071 firefox
+Attach to the process:
+	$ gdb -p 2071
+Then at the (gdb) prompt:
+	(gdb) generate-core-file
+	Saved corefile core.2071
+	(gdb) quit
 
 
 # 进程管理
