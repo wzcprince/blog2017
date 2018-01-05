@@ -175,22 +175,57 @@ Linux 信号应用之黑匣子程序设计 - 文章 - 伯乐在线
 	- 参见 Core dump - ArchWiki
 <https://wiki.archlinux.org/index.php/Core_dump#Disabling_automatic_core_dumps>
 
+- sigaltstack
+
+	sigaltstack() allows a process to define a new alternate signal stack and/or retrieve the state of
+	an existing alternate signal stack.  An alternate signal stack is used during the execution  of  a
+	signal handler if the establishment of that handler (see sigaction(2)) requested it.
+- backtrace
+返回一个数组，数组的每个元素都是一个函数地址
+
+	backtrace()  returns  a  backtrace  for the calling program, in the array pointed to by buffer.  A
+	backtrace is the series of currently active function calls for the  program.   Each  item  in  the
+	array  pointed  to  by  buffer is of type void *, and is the return address from the corresponding
+	stack frame.  
+- backtrace_symbols
+
 
 ## gdb-manually-make-coredump
 Core dump - ArchWiki
 <https://wiki.archlinux.org/index.php/Core_dump#Making_a_core_dump>
 
 找到目标进程
+
 	$ pgrep -f firefox
 	2071 firefox
 
 Attach to the process:
+
 	$ gdb -p 2071
 
 Then at the (gdb) prompt:
+
 	(gdb) generate-core-file
 	Saved corefile core.2071
 	(gdb) quit
+
+
+
+# 用户空间与内核空间数据交换
+
+在 Linux 下用户空间与内核空间数据交换的方式，第 1 部分: 内核启动参数、模块参数与sysfs、sysctl、系统调用和netlink
+<https://www.ibm.com/developerworks/cn/linux/l-kerns-usrs/index.html>
+
+在 Linux 下用户空间与内核空间数据交换的方式，第 2 部分: procfs、seq_file、debugfs和relayfs
+<https://www.ibm.com/developerworks/cn/linux/l-kerns-usrs2/index.html?ca=drs->
+
+
+其实各种虚拟文件系统是一种很重要的通信方式
+比如 导出huge page的fs、cgroup fs
+mkdir /mnt/huge
+mount -t hugetlbfs nodev /mnt/huge 
+
+
 
 
 # 进程管理

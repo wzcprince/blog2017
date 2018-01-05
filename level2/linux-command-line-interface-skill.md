@@ -1,7 +1,41 @@
 
+# essential
+
+## pgrep
+
+pgrep, pkill - look up or signal processes based on name and other attributes
+
+       pgrep  looks  through  the  currently  running processes and lists the process IDs which match the
+       selection criteria to stdout.  All the criteria have to match.  For example,
+
+              $ pgrep -u root sshd
+
+       will only list the processes called sshd AND owned by root.  On the other hand,
+
+              $ pgrep -u root,daemon
+
+       will list the processes owned by root OR daemon.
+
+       pkill will send the specified signal (by default SIGTERM) to each process instead of listing  them
+       on stdout.
+
+用法参见 
+<https://github.com/wzcprince/blog2017/blob/master/linux-kernel-userspace-summary.md#gdb-manually-make-coredump>
+
+ 
+
+
+
+
+
+
 
 
 # shell
+
+
+## 帖子
+shell环境变量以及set,env,export的区别  http://blog.csdn.net/iitvip/article/details/11950699
 
 ## heredoc-format 
 
@@ -36,6 +70,13 @@ EOT
 
 
 # app
+
+
+## iptables
+
+25 个常用的 Linux iptables 规则 - 文章 - 伯乐在线
+<http://blog.jobbole.com/108468/>
+
 
 ## 磁盘管理工具
 
@@ -91,6 +132,19 @@ ubuntu是基于debian 发行的 所以可以用
 - c - How to print every executed line in GDB automatically until a given breakpoint is reached? - Stack Overflow
 <https://stackoverflow.com/questions/6947389/how-to-print-every-executed-line-in-gdb-automatically-until-a-given-breakpoint-i#>
 
+
+## stace
+使用 Strace 和 GDB 调试工具的乐趣
+<https://www.ibm.com/developerworks/cn/aix/library/au-unix-strace.html>
+
+- strace pwd
+启动一个新进程同时strace
+
+- strace -e trace=network -p 4009
+对现在正在运行的进程进行strace
+
+
+
 ## iproutes工具包
 
 ip link set ens38 up
@@ -109,7 +163,42 @@ Linux系统中自动mount需配置/etc/fstab文件，此文件是专门用来存
 
 
 
+
+
+
+
+
+
+
+
+
 # 自己的实践
+
+## 修改时区
+
+　　如果要修改时区并且马上生效，可以更换/etc/localtime 文件来实现。比如修改时区为中国上海，那么就可以使用如下的命令来使得时区的更改生效。
+
+　　cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+　　然后最好使用下面的命令将更改写入bios。
+
+　　hwclock
+
+　　--------------------------------
+
+　　具体操作：
+
+　　[root@localhost ~]# cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+　　cp: overwrite `/etc/localtime'? y
+
+　　[root@localhost ~]# date
+
+　　Sat Feb 20 16:04:43 CST 2010
+
+　　[root@localhost ~]# hwclock
+
+　　Sat 20 Feb 2010 04:05:12 PM CST -0.474966 seconds
 
 ## Ubuntu-setup-smbd
 
