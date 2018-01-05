@@ -9,6 +9,9 @@
 
 ### 价值目标
 
+blog2017/performance-optimization-summary.md at master · wzcprince/blog2017 · GitHub
+<https://github.com/wzcprince/blog2017/blob/master/performance-optimization-summary.md#增加cache>
+
 参见 <http://wiki.libvirt.org/page/FAQ#What_is_libvirt.3F>
 
 - provides a convenient way to manage virtual machines and other virtualization functionality, such as storage and network interface management.

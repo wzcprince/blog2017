@@ -121,8 +121,17 @@ ZMQ并不像是一个传统意义上的消息队列服务器，事实上，它�
 What really happens when you navigate to a URL:
 http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250dbd02fa161b6d076d7650c92f2&scene=2&from=timeline&isappinstalled=0#rd
 
+Web server调研分析 - 百度技术博客 - 51CTO技术博客
+<http://baidutech.blog.51cto.com/4114344/743732>
+
+##Nginx
+Nginx（发音同 engine x）
+<http://nginx.org/en/docs/beginners_guide.html>
 
 
+- nginx源码分析 http://www.360doc.com/content/10/1115/18/61151_69615382.shtml 
+	- 不过各个部分之间耦合的比较厉害，很难把其中某个部分的实现拆出来使用。对于这样一个中大型的复杂系统源码进行分析，是有一定的难度的，刚开始也很难找到下手的入口，所以做这样的事情就必须首先明确目标和计划。
+	- 看了几天的源码，进度很慢，过于关注代码实现的细节了，反而很难看清整体结构。于是问诸google寻找方法。大体上分析源代码都要经历三遍过程，第一遍是浏览，通过阅读源码的文档和注释，阅读接口，先弄清楚每个模块是干什么的而不关心它是怎么做的，画出架构草图；第二遍是精读，根据架构草图把系统分为小部分，每个部分从源码实现自底向上的阅读，更深入细致的理解每个模块的实现方式以及与模块外部的接口方式等，弄明白模块是怎么做的，为什么这样做，有没有更好的方式，自己会如何实现等等问题；第三遍是总结回顾，完善架构图，把架构图中那些模糊的或者空着的模块重新补充完善，把一些可复用的实现放入自己的代码库中。
 
 
 # container
@@ -151,6 +160,11 @@ kubernetes之所以能 “automates the distribution and scheduling of applicati
 
 ## rocket
 
+
+## ali-pouch
+阿里 pouch [paʊtʃ]
+D:\!learn\code\from_github\hangzhouYunQi2017ppt\容器技术专场\E-2-5+11.00AM+容器技术专场+No.4+孙宏亮.pdf
+2016年双十一就开始用了，容器实例数达到几十万个
 
 ## 技术趋势
 
@@ -273,8 +287,21 @@ SOA(Service Oriented Architecture)
  【想到 L2VPN给VPWS申请单个标签的时候，肯定是可以并发请求的，那并发请求如何区分呢？用的是事务号吗？应该不是，因为并发创建bfd用mcm的时候bfd会把pwindex和pwtunneltype(vpws/vpls)返回】
 
 
+## JSON
+参见 <http://www.w3school.com.cn/json/>
+可以对比 protobuf 二进制的**对象序列化**方法
+
+JSON：JavaScript 对象表示法（JavaScript Object Notation）。
+JSON 是存储和交换文本信息的语法。类似 XML。
+JSON 比 XML 更小、更快，更易解析。
+JSON 指的是 JavaScript 对象表示法（JavaScript Object Notation）
+JSON 是轻量级的文本数据交换格式
+JSON 独立于语言 *
+JSON 具有自我描述性，更易理解
+* JSON 使用 JavaScript 语法来描述数据对象，但是 JSON 仍然独立于语言和平台。JSON 解析器和 JSON 库支持许多不同的编程语言。
+JSON - 转换为 JavaScript 对象
+JSON 文本格式在语法上与创建 JavaScript 对象的代码相同。
+由于这种相似性，无需解析器，JavaScript 程序能够使用内建的 eval() 函数，用 JSON 数据来生成原生的 JavaScript 对象。
 
 
-
-
-
+## protobuf
