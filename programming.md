@@ -8,10 +8,16 @@ C99 added a builtin _Bool data type (see Wikipedia for details), and if you #inc
 You asked about the Linux kernel in particular. It assumes the presence of _Bool and provides a bool typedef itself in include/linux/types.h.
 
 
+### Byte-Order-Bit-Order
+
+Byte and Bit Order Dissection | Linux Journal
+<https://www.linuxjournal.com/article/6788>
+
 
 ### 帖子
 C语言中结构体赋值的讨论  http://blog.csdn.net/hazir/article/details/9429017
 字节序及位域使用 http://blog.csdn.net/wangpeihuixyz/article/details/24433655 
+
 
 
 
@@ -53,5 +59,7 @@ likely很可能的
 work_done 完成的工作量
 budget 预算
 if (unlikely(work_done >= budget))
+
+
 
 

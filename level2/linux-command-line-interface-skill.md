@@ -33,9 +33,39 @@ pgrep, pkill - look up or signal processes based on name and other attributes
 
 # shell
 
-
 ## 帖子
 shell环境变量以及set,env,export的区别  http://blog.csdn.net/iitvip/article/details/11950699
+
+
+## Redirection
+重定向 (计算机) - 维基百科，自由的百科全书
+<https://zh.wikipedia.org/wiki/重定向_(计算机)>
+
+Redirection (computing) - Wikipedia
+<https://en.wikipedia.org/wiki/Redirection_(computing)>
+
+
+- 管道
+- 命令tee可以将一个命令的输出重定向到几个目标
+
+
+		Shell重定向＆>file、2>&1、1>&2的区别:
+		http://www.360doc.cn/article/7044580_287544243.html
+		0表示标准输入
+		1表示标准输出
+		2表示标准错误输出
+		> 默认为标准输出重定向，与 1> 相同
+		2>&1 意思是把 标准错误输出 重定向到 标准输出.
+		&>file 意思是把 标准输出 和 标准错误输出 都重定向到文件file中
+		用例子说话：
+		1. grep da * 1>&2
+		2. rm -f $(find / -name core) &> /dev/null
+		上面两例中的 & 如何理解，&不是放到后台执行吗?
+		牛解：
+		1.&>file或n>&m均是一个独立的重定向符号，不要分开来理解。
+		2.明确文件和文件描述符的区别。
+		3.&>file表示重定向标准输出和错误到文件
+
 
 ## heredoc-format 
 
@@ -161,8 +191,8 @@ ip neighbor change 192.168.11.2  lladdr  00:0c:29:0f:d8:05 nud permanent dev ens
 Linux系统中自动mount需配置/etc/fstab文件，此文件是专门用来存放文件系统的静态信息的文件。Linux系统启动时会自动从这个文件读取信息，并完成其指定的文件系统挂载任务。
 参见 <http://www.linuxidc.com/Linux/2012-04/59110.htm>
 
-
-
+## chattr
+change file attributes on a Linux file system
 
 
 
