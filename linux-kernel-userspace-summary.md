@@ -122,6 +122,53 @@ communication between kernel and user space (AF_NETLINK)
 
 
 
+## systemd
+
+systemd System and Service Manager
+和init一样PID=1
+注意哟，**systemd也是linux系统启动过程中重要的一部分**
+
+源代码： <https://github.com/systemd/systemd>
+官方wiki <https://www.freedesktop.org/wiki/Software/systemd/>
+
+浅析 Linux 初始化 init 系统，第 3 部分: Systemd
+<https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html>
+
+The Story Behind 'init' and 'systemd': Why 'init' Needed to be Replaced with 'systemd' in Linux
+<https://www.tecmint.com/systemd-replaces-init-in-linux/>
+
+
+### systemd关键点
+- PID=1
+- 强调spelling必须是 systemd
+- aggressive parallelization capabilities**并行化大大加速了linux系统启动过程**
+- 使用control groups即cgroup实现进程追踪和生命周期管理
+	- CGroup 提供了类似文件系统的接口，使用方便。当进程创建子进程时，子进程会继承父进程的 CGroup。因此无论服务如何启动新的子进程，所有的这些相关进程都会属于同一个 CGroup，systemd 只需要简单地遍历指定的 CGroup 即可正确地找到所有的相关进程，将它们一一停止即可。
+- 如果所有的 Linux 发行版都采纳了 systemd，那么系统管理任务便可以很大程度上实现标准化。
+- 未完待续
+
+
+### systemctl
+
+
+### 日志log
+http://man7.org/linux/man-pages/man1/journalctl.1.html
+
+http://man7.org/linux/man-pages/man3/syslog.3.html
+
+技术|用系统日志了解你的 Linux 系统
+https://linux.cn/article-9150-1.html
+
+#### 后台进程-daemon-二进制格式-journalctl
+#### var-log-plain-text-format
+
+
+
+
+
+
+
+
 
 # 进程管理
 ## scheduler
@@ -782,138 +829,11 @@ http://blog.csdn.net/dog250/article/details/17061537
 正如Linus所说，splice实际上是内核空间的read/write，而tee则是内核空间的memcpy，至于sendfile，它只是一种特定的优化，该优化对于可以使用page cache的文件系统有效。
 
 
-## CLI技巧
-
-最实用的 Linux 命令行使用技巧
-http://mp.weixin.qq.com/s/HbP5VwpWfQkyeWISCrOD7w
-
-### shell
-
-#### heredoc-format 
-
-- Here document - Wikipedia
-<https://en.wikipedia.org/wiki/Here_document#Unix_shells>
-
-In computing, a here document (here-document, here-text, heredoc, hereis, here-string or here-script) is a file literal or input stream literal: it is a section of a source code file that is treated as if it were a separate file. The term is also used for a form of multiline string literals that use similar syntax, preserving line breaks and other whitespace (including indentation) in the text.
-Here documents originate in the Unix shell, and are found in sh, csh,[1] ksh, bash and zsh, among others.
-
-
-- linux - How does "cat << EOF" work in bash? - Stack Overflow
-<https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash>
-From man bash:Here Documents
-This type of redirection instructs the shell to read input from the current source until a line containing only word (with no trailing blanks) is seen.
-
-##### 实例1
-7. Virtio_user for Container Networking — Data Plane Development Kit 18.02.0-rc0 documentation
-http://www.dpdk.org/doc/guides/howto/virtio_user_for_container_networking.html
-cat <<EOT >> Dockerfile
-FROM ubuntu:latest
-WORKDIR /usr/src/dpdk
-COPY . /usr/src/dpdk
-ENV PATH "$PATH:/usr/src/dpdk/x86_64-native-linuxapp-gcc/app/"
-EOT
-
-
-### systemd
-
-systemd System and Service Manager
-和init一样PID=1
-注意哟，**systemd也是linux系统启动过程中重要的一部分**
-
-源代码： <https://github.com/systemd/systemd>
-官方wiki <https://www.freedesktop.org/wiki/Software/systemd/>
-
-浅析 Linux 初始化 init 系统，第 3 部分: Systemd
-<https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html>
-
-The Story Behind 'init' and 'systemd': Why 'init' Needed to be Replaced with 'systemd' in Linux
-<https://www.tecmint.com/systemd-replaces-init-in-linux/>
-
-
-
-#### systemd关键点
-- PID=1
-- 强调spelling必须是 systemd
-- aggressive parallelization capabilities**并行化大大加速了linux系统启动过程**
-- 使用control groups即cgroup实现进程追踪和生命周期管理
-	- CGroup 提供了类似文件系统的接口，使用方便。当进程创建子进程时，子进程会继承父进程的 CGroup。因此无论服务如何启动新的子进程，所有的这些相关进程都会属于同一个 CGroup，systemd 只需要简单地遍历指定的 CGroup 即可正确地找到所有的相关进程，将它们一一停止即可。
-- 如果所有的 Linux 发行版都采纳了 systemd，那么系统管理任务便可以很大程度上实现标准化。
-- 未完待续
-
-
-#### systemctl
-
-
-
-
-
-### 日志log
-http://man7.org/linux/man-pages/man1/journalctl.1.html
-
-http://man7.org/linux/man-pages/man3/syslog.3.html
-
-技术|用系统日志了解你的 Linux 系统
-https://linux.cn/article-9150-1.html
-
-#### 后台进程-daemon-二进制格式-journalctl
-#### var-log-plain-text-format
-
-
-### 应用程序安装-软件包管理
-
-#### Redhat和Fedora和SUSE用rpm包
-安装：yum install <package_name> 
-卸载：yum remove <package_name> 
-更新：yum update <package_name>
-
-#### Debian Ubuntu用deb包
-安装：apt-get install <package_name> 
-卸载：apt-get remove <package_name> 
-更新：apt-get update <package_name>
-
-### ssh
-
-- SSH连接超时(ssh timeout) 解决办法，参见 http://www.linuxidc.com/Linux/2013-02/79941.htm
-在/etc/ssh/sshd_config中增加ClientAliveInterval 60, ClientAliveInterval指定了服务器端向客户端请求消息的时间间隔, 默认是0, 不发送.而ClientAliveInterval 60表示每分钟发送一次, 然后客户端响应, 这样就保持长连接了
-
-
-### gdb
-
-- gdb file 命令
-- gdb frame命令
-- core-file用来指定core dump文件
-	- 需要先file指定exe，再用core-file指定core dump文件，否则无法打印调用栈
-
-#### gdb自动化
-
-- scripting - What are the best ways to automate a GDB debugging session? - Stack Overflow
-<https://stackoverflow.com/questions/10748501/what-are-the-best-ways-to-automate-a-gdb-debugging-session>
-- c - How to print every executed line in GDB automatically until a given breakpoint is reached? - Stack Overflow
-<https://stackoverflow.com/questions/6947389/how-to-print-every-executed-line-in-gdb-automatically-until-a-given-breakpoint-i#>
-
-### iproutes工具包
-
-ip link set ens38 up
-ip address add 1.1.1.1/24 dev ens38
-
-ip route add default via 192.168.11.2 dev ens38
-ip route replace default via 192.168.11.2 dev ens38
-
-ip neighbor add 192.168.11.2  lladdr  00:0c:29:0f:d8:05 nud permanent dev ens38
-ip neighbor change 192.168.11.2  lladdr  00:0c:29:0f:d8:05 nud permanent dev ens38
-
-
-### mount
-Linux系统中自动mount需配置/etc/fstab文件，此文件是专门用来存放文件系统的静态信息的文件。Linux系统启动时会自动从这个文件读取信息，并完成其指定的文件系统挂载任务。
-参见 <http://www.linuxidc.com/Linux/2012-04/59110.htm>
-
 
 #待阅读资料
 
 - Linux系统结构 详解
 <http://blog.csdn.net/hguisu/article/details/6122513>
-- 最实用的 Linux 命令行使用技巧 - 文章 - 伯乐在线
-<http://blog.jobbole.com/112265/>
 
 
 
