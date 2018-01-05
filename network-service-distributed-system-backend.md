@@ -25,6 +25,31 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 # 七层协议
 <https://github.com/wzcprince/blog2017/blob/master/network-protocols.md#应用层-七层协议>
 
+
+
+# cloud-native
+Cloud-Native | Pivotal
+<https://pivotal.io/cloud-native>
+
+## cloud-native定义
+
+Organizations require a platform
+
+- for building and operating cloud-native applications and services 
+- that automates and integrates the concepts of 
+	- **DevOps, continuous delivery, microservices, and containers**
+
+### microservices
+
+Microservices | Pivotal
+<https://pivotal.io/microservices>
+
+Microservices refers to an architectural approach that independent teams use to prioritize the continuous delivery of single-purpose services. 
+The microservices model is **the opposite of traditional monolithic software** which consists of tightly integrated modules that ship infrequently and have to scale as a single unit. 
+
+
+
+
 # 负载均衡
 
 ## 阿里版LVS
@@ -124,7 +149,10 @@ http://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=201649528&idx=1&sn=003250db
 Web server调研分析 - 百度技术博客 - 51CTO技术博客
 <http://baidutech.blog.51cto.com/4114344/743732>
 
-##Nginx
+Web 前后端分离的意义大吗？ - 知乎
+<https://www.zhihu.com/question/28207685
+
+## Nginx
 Nginx（发音同 engine x）
 <http://nginx.org/en/docs/beginners_guide.html>
 
@@ -132,6 +160,19 @@ Nginx（发音同 engine x）
 - nginx源码分析 http://www.360doc.com/content/10/1115/18/61151_69615382.shtml 
 	- 不过各个部分之间耦合的比较厉害，很难把其中某个部分的实现拆出来使用。对于这样一个中大型的复杂系统源码进行分析，是有一定的难度的，刚开始也很难找到下手的入口，所以做这样的事情就必须首先明确目标和计划。
 	- 看了几天的源码，进度很慢，过于关注代码实现的细节了，反而很难看清整体结构。于是问诸google寻找方法。大体上分析源代码都要经历三遍过程，第一遍是浏览，通过阅读源码的文档和注释，阅读接口，先弄清楚每个模块是干什么的而不关心它是怎么做的，画出架构草图；第二遍是精读，根据架构草图把系统分为小部分，每个部分从源码实现自底向上的阅读，更深入细致的理解每个模块的实现方式以及与模块外部的接口方式等，弄明白模块是怎么做的，为什么这样做，有没有更好的方式，自己会如何实现等等问题；第三遍是总结回顾，完善架构图，把架构图中那些模糊的或者空着的模块重新补充完善，把一些可复用的实现放入自己的代码库中。
+
+
+## libev
+libev 设计分析 - CNode技术社区
+<https://cnodejs.org/topic/4f16442ccae1f4aa270010a3
+
+
+## IO模型
+
+linux AIO （异步IO） 那点事儿 - CNode技术社区
+<https://cnodejs.org/topic/4f16442ccae1f4aa270010a7
+
+
 
 
 # container
@@ -161,8 +202,8 @@ kubernetes之所以能 “automates the distribution and scheduling of applicati
 ## rocket
 
 
-## ali-pouch
-阿里 pouch [paʊtʃ]
+## pouch
+阿里 ali-pouch [paʊtʃ]
 D:\!learn\code\from_github\hangzhouYunQi2017ppt\容器技术专场\E-2-5+11.00AM+容器技术专场+No.4+孙宏亮.pdf
 2016年双十一就开始用了，容器实例数达到几十万个
 
