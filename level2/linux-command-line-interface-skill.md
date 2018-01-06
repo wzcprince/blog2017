@@ -20,7 +20,7 @@ pgrep, pkill - look up or signal processes based on name and other attributes
        on stdout.
 
 用法参见 
-<https://github.com/wzcprince/blog2017/blob/master/linux-kernel-userspace-summary.md#gdb-manually-make-coredump>
+[gdb-manually-make-coredump](#gdb-manually-make-coredump)
 
  
 
@@ -161,6 +161,30 @@ ubuntu是基于debian 发行的 所以可以用
 <https://stackoverflow.com/questions/10748501/what-are-the-best-ways-to-automate-a-gdb-debugging-session>
 - c - How to print every executed line in GDB automatically until a given breakpoint is reached? - Stack Overflow
 <https://stackoverflow.com/questions/6947389/how-to-print-every-executed-line-in-gdb-automatically-until-a-given-breakpoint-i#>
+
+
+
+### gdb-manually-make-coredump
+Core dump - ArchWiki
+<https://wiki.archlinux.org/index.php/Core_dump#Making_a_core_dump>
+
+找到目标进程
+
+	$ pgrep -f firefox
+	2071 firefox
+
+Attach to the process:
+
+	$ gdb -p 2071
+
+Then at the (gdb) prompt:
+
+	(gdb) generate-core-file
+	Saved corefile core.2071
+	(gdb) quit
+
+
+
 
 
 ## stace

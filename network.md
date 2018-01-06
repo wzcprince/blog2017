@@ -1,4 +1,52 @@
 
+
+# network-implementation
+
+## single-device-viewpoint
+network-implementation
+
+### control-plane
+
+#### protocols
+
+### data-plane
+
+#### V8
+V8的FES是控制平面和数据平面的接口
+
+#### dpdk
+
+### management-plane
+
+
+
+### NFV
+
+
+
+## network-inter-device-viewpoint
+从一个网络视角或者说网络内设备间视角来看
+注意 这里的网络是比较宽泛的，可能是一个互联网络，可以是一个AS自治域
+
+
+### Operator-Network 
+
+### Data-Center-Network
+
+
+### Data-Center-Inter-connect
+
+
+### SDN
+
+
+
+
+# network-service
+聚焦应用层，聚焦网络提供的服务
+
+
+
 # 三层转发二层交换
 
 

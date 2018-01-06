@@ -190,24 +190,13 @@ Linux 信号应用之黑匣子程序设计 - 文章 - 伯乐在线
 - backtrace_symbols
 
 
-## gdb-manually-make-coredump
-Core dump - ArchWiki
-<https://wiki.archlinux.org/index.php/Core_dump#Making_a_core_dump>
 
-找到目标进程
 
-	$ pgrep -f firefox
-	2071 firefox
 
-Attach to the process:
 
-	$ gdb -p 2071
 
-Then at the (gdb) prompt:
 
-	(gdb) generate-core-file
-	Saved corefile core.2071
-	(gdb) quit
+
 
 
 
@@ -224,6 +213,16 @@ Then at the (gdb) prompt:
 比如 导出huge page的fs、cgroup fs
 mkdir /mnt/huge
 mount -t hugetlbfs nodev /mnt/huge 
+
+
+
+
+
+
+
+
+
+
 
 
 
