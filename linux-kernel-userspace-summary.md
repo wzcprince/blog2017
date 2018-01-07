@@ -119,6 +119,41 @@ communication between kernel and user space (AF_NETLINK)
 
 
 
+## process-custom-core-dump-file
+
+Linux 信号应用之黑匣子程序设计 - 文章 - 伯乐在线
+<http://blog.jobbole.com/101619/>
+
+- 默认是进程的整个虚拟地址空间，为什么要自定义呢？
+	- 64位的时候太大啦，太浪费磁盘空间了
+	- 也影响系统性能
+	- 安全，比如coredump文件中可能保存着密码
+	- 参见 Core dump - ArchWiki
+<https://wiki.archlinux.org/index.php/Core_dump#Disabling_automatic_core_dumps>
+
+- sigaltstack
+
+	sigaltstack() allows a process to define a new alternate signal stack and/or retrieve the state of
+	an existing alternate signal stack.  An alternate signal stack is used during the execution  of  a
+	signal handler if the establishment of that handler (see sigaction(2)) requested it.
+- backtrace
+返回一个数组，数组的每个元素都是一个函数地址
+
+	backtrace()  returns  a  backtrace  for the calling program, in the array pointed to by buffer.  A
+	backtrace is the series of currently active function calls for the  program.   Each  item  in  the
+	array  pointed  to  by  buffer is of type void *, and is the return address from the corresponding
+	stack frame.  
+- backtrace_symbols
+
+另外参见 <https://github.com/wzcprince/blog2017/blob/master/level2/linux-command-line-interface-skill.md#gdb-manually-make-coredump>
+
+
+## epoll
+
+- edge-triggered的必要性 necessity [nə'sɛsəti]
+
+- 请教大家一个关于EPOLLET和EPOLLLT的问题
+http://www.360doc.cn/article/9200790_268018002.html
 
 
 
@@ -161,35 +196,6 @@ https://linux.cn/article-9150-1.html
 
 #### 后台进程-daemon-二进制格式-journalctl
 #### var-log-plain-text-format
-
-
-## custom-core-dump-file
-
-Linux 信号应用之黑匣子程序设计 - 文章 - 伯乐在线
-<http://blog.jobbole.com/101619/>
-
-- 默认是进程的整个虚拟地址空间，为什么要自定义呢？
-	- 64位的时候太大啦，太浪费磁盘空间了
-	- 也影响系统性能
-	- 安全，比如coredump文件中可能保存着密码
-	- 参见 Core dump - ArchWiki
-<https://wiki.archlinux.org/index.php/Core_dump#Disabling_automatic_core_dumps>
-
-- sigaltstack
-
-	sigaltstack() allows a process to define a new alternate signal stack and/or retrieve the state of
-	an existing alternate signal stack.  An alternate signal stack is used during the execution  of  a
-	signal handler if the establishment of that handler (see sigaction(2)) requested it.
-- backtrace
-返回一个数组，数组的每个元素都是一个函数地址
-
-	backtrace()  returns  a  backtrace  for the calling program, in the array pointed to by buffer.  A
-	backtrace is the series of currently active function calls for the  program.   Each  item  in  the
-	array  pointed  to  by  buffer is of type void *, and is the return address from the corresponding
-	stack frame.  
-- backtrace_symbols
-
-
 
 
 
@@ -317,6 +323,13 @@ https://www.kernel.org/doc/Documentation/cgroups/cgroups.txt
 
 - docker
 - systemd用cgroup跟踪进程父子关系树
+
+
+
+## namespace
+
+linux 网络虚拟化： network namespace 简介 – Cizixs Writes Here
+<http://cizixs.com/2017/02/10/network-virtualization-network-namespace>
 
 
 
@@ -453,6 +466,15 @@ D:\!learn\code\linux-4.4.82\full\Documentation\networking\scaling.txt
 参考 2010年 Linux 下网络性能优化方法简析
 https://www.ibm.com/developerworks/cn/linux/l-cn-network-pt/index.html
 【比较古老了，新代码很多已经变化了】
+
+
+
+## TCP
+
+- SYN cookie可以阻止SYN flood攻击
+
+
+
 
 ## 收包
 ### none-NAPI (注意总线地址的概念)

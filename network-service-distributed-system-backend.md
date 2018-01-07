@@ -111,6 +111,13 @@ A good summary of popular kernel bypass techniques is presented in [10].
 http://www.infoq.com/cn/articles/Maglev-Vortex
 
 
+##帖子
+
+负载均衡原理的解析 - 源子姗
+<https://my.oschina.net/u/3341316/blog/877206>
+
+
+
 
 
 

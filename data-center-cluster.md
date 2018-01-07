@@ -125,6 +125,12 @@ https://www.zhihu.com/question/26895729
 
 
 
+### OpenStack虚机网卡的创建过程
+<http://www.sdnlab.com/20286.html>
+
+
+
+
 
 # 网络
 
