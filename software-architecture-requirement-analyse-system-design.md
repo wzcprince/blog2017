@@ -23,11 +23,18 @@ like MFC, ACE, and AWT that encapsulate native
 OS C APIs, such as sockets, pthreads, or GUI functions.
 
 
+## State 
+一种对象行为模式， Allow an object responds differently depending on its current state.
+
+
 
 # 重要资料
 
+数据结构与程序架构（七） - CSDN博客
+<http://blog.csdn.net/banqingzi/article/details/23787983###;>
 
-State 设计模式 一种对象行为模式， Allow an object responds differently depending on its current state.
+- 数据流图是一个非常实用的设计工具，因为它对于我们分析整个系统的业务逻辑非常的直观且容易理解，它可以将繁琐的控制逻辑（即How）屏蔽掉，而且通常，结合一个数据流图，我们可以只用几句话，就把一个任务的目标（即What和Why）说明清楚，这是使用其它设计工具所无法比拟的优势（比如UML中的类关系图，本质上，类的继承关系仍然是一种调用关系，即描述的是How）。
+
 
 
 ## 熊怡-架构与模块设计
