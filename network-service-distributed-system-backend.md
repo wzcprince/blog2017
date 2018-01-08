@@ -150,7 +150,18 @@ rpc中，jsonrpc和xmlrpc一般认为是使用json和xml作为序列化方法，
 grpc协议，序列化方法是protobuf，传输协议基于HTTP2。
 
 
-## 消息队列
+
+
+
+
+
+
+
+
+
+
+
+# 消息队列
 
 消息队列的两种模式 - CSDN博客
 <http://blog.csdn.net/heyutao007/article/details/50131089>
@@ -178,6 +189,19 @@ http://www.cnblogs.com/itfly8/p/5156155.html
 <http://blog.csdn.net/shaobingj126/article/details/50585035#t18>
 
 ZMQ并不像是一个传统意义上的消息队列服务器，事实上，它也根本不是一个服务器，更像一个底层的网络通讯库，在Socket API之上做了一层封装，将网络通讯、进程通讯和线程通讯抽象为统一的API接口。支持“Request-Reply “，”Publisher-Subscriber“，”Parallel Pipeline”三种基本模型和扩展模型。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Web服务
@@ -385,3 +409,13 @@ JSON 文本格式在语法上与创建 JavaScript 对象的代码相同。
 
 
 ## protobuf
+
+## 日订单峰值破40万！58速运订单调度系统架构大解密
+<https://mp.weixin.qq.com/s?src=11&timestamp=1515374663&ver=623&signature=6KGHQcsBueu2NzlzyECSoYhesFRZfXbadjzMsGmgu5o*F-QxVtOG7TvrjXTa1C38fipJ39ipJdi0LgsJKD*8x8*duvnzlg9HHCISJrhMzlm2TBk8JB8amJPWuYqw9tuw&new=1>
+
+- 学习一下他的逐步演进过程
+- 有提到分库分表的技巧
+- 有提到消息追踪系统，也叫调用跟踪系统
+
+
+
