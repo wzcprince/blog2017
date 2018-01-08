@@ -2,6 +2,28 @@
 
 
 
+# design-patterns
+
+## facade
+
+设计模式之-门面模式 - CSDN博客
+<http://blog.csdn.net/lizhitao/article/details/38360351>
+
+design patterns - Façade vs. Mediator - Stack Overflow
+<https://stackoverflow.com/questions/481984/façade-vs-mediator>
+
+wrapper-facade.dvi
+<http://www.cs.wustl.edu/~schmidt/PDF/wrapper-facade.pdf>
+
+- This paper describes the Wrapper Facade pattern. The intent
+of this pattern is to encapsulate low-level functions and data
+structures with object-oriented (OO) class interfaces. Common
+examples of the Wrapper Facade pattern are class libraries
+like MFC, ACE, and AWT that encapsulate native
+OS C APIs, such as sockets, pthreads, or GUI functions.
+
+
+
 # 重要资料
 
 

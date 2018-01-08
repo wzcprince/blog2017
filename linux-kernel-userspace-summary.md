@@ -338,13 +338,45 @@ linux 网络虚拟化： network namespace 简介 – Cizixs Writes Here
 
 # cache
 
-cache line bouncing 和 MAC flapping
+
+Cache Line可以简单的理解为CPU Cache中的最小缓存单位。【和filesystem的block概念如出一辙】
+目前主流的CPU Cache的Cache Line大小都是64Bytes。
+假设我们有一个32KB的一级缓存，那么按照64B的缓存单位大小来算，这个一级缓存所能存放的缓存个数就是32KB/64 =512个
+![](http://p14ws25od.bkt.clouddn.com/201801081154_701.png)
+
+
 
 ## cacheline对齐
 内核源代码里到处都是 ____cacheline_aligned 
 
-## cache line bouncing
+参见 ULK 8.2.9 Aligning Objects in Memory
+- If the object's size is greater than half of a cache line, it is aligned in RAM to a multiple of L1_CACHE_BYTESthat is, at the beginning of the line.
+- Otherwise, the object size is rounded up to a submultiple of L1_CACHE_BYTES; this ensures that a small object will never span across two cache lines. Clearly, what the slab allocator is doing here is trading memory space for access time【每个程序员都该知道的五大定理#“每一个决定都是一次权衡”】; it gets better cache performance by artificially increasing the object size, thus causing additional internal fragmentation.
 
+## cacheline存放规则
+
+CPU Cache比较小，要用来存放最近访问的某些Cache Line，如何设计呢？
+至少需要有个内存地址到Cache地址的映射吧，哈哈
+1：不能是Hash表： hash计算需要1万个CPU Cycle，太耗时，硬件hash成本较高
+2：不能是Fully Associative【总结，太慢了】： 
+Fully Associative 字面意思是全关联。在CPU Cache中的含义是：如果在一个Cache集内，任何一个内存地址的数据可以被缓存在任何一个Cache Line里，那么我们成这个cache是Fully Associative。从定义中我们可以得出这样的结论：给到一个内存地址，要知道他是否存在于Cache中，需要遍历所有Cache Line并比较缓存内容的内存地址。
+3：不能做成Direct Mapped
+和Fully Associative完全相反，使用Direct Mapped模式的Cache给定一个内存地址，就唯一确定了一条Cache Line。设计复杂度低且速度快。那么为什么Cache不使用这种模式呢？ 
+【-- 比如 32KB L1 Cache  4GB内存，无论何种算法，都要是每128（4GB/32KB）个内存块共用同一个1个Cache Line】
+这种模式下每条Cache Line的使用率如果要做到接近100%，就需要操作系统对于内存的分配和访问在地址上也是近乎平均的。而与我们的意愿相反，为了减少内存碎片和实现便捷，操作系统更多的是连续集中的使用内存。
+【--其实这个解释不怎么滴，我觉得吧，它的缺点是太单调了，没有一点余地，一个CacheLine一旦冲突就要被淘汰】
+
+4：终极大法：N-Way Set Associative 【总结，上面两条的有机整合、平衡、均衡、折中】
+原理是把一个缓存按照N个Cache Line作为一组（set），把Cache按set划分，每个set都有唯一的index。
+32KB 8-Way Set Associative 的 L1 Cache  共有32KB / 64B / 8 = 64个set，每个set有8个cache line
+每次内存访问，我要用从内存地址确定set index【来自Direct Mapped】，
+然后查看一下这个set内的8个cache line是否命中【来自Fully Associative】
+牛牪犇
+
+
+
+## cache line bouncing
+cache line bouncing 和 MAC flapping
 ### MCS
 参见 [#mcs自旋锁好牛叉](#mcs自旋锁好牛叉)
 
@@ -361,6 +393,10 @@ Coloring essentially leads to moving some of the free area of the slab from the 
 ![](http://p14ws25od.bkt.clouddn.com/201712291648_167.png)
 
 在glibc中也有类似机制，参见[pthread_create](#pthread_create)
+
+
+
+
 
 # 内存
 
