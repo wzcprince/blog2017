@@ -9,6 +9,11 @@ network-implementation
 
 #### protocols
 
+##### TCP
+
+- Google TCP fast open
+https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/37517.pdf
+
 ### data-plane
 
 #### V8

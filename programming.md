@@ -53,6 +53,17 @@ You asked about the Linux kernel in particular. It assumes the presence of _Bool
 Byte and Bit Order Dissection | Linux Journal
 <https://www.linuxjournal.com/article/6788>
 
+MAC address - Wikipedia
+<https://en.wikipedia.org/wiki/MAC_address#Bit-reversed_notation>
+
+字节序(byte order)和位序(bit order) - liuxingen的专栏 - CSDN博客
+<http://blog.csdn.net/liuxingen/article/details/45420455>
+
+### structure-bitfield
+位域
+再谈C语言位域 | Tony Bai
+<http://tonybai.com/2013/05/21/talk-about-bitfield-in-c-again/>
+
 
 ### define-enum-member-in-struct
 
@@ -131,11 +142,28 @@ C++ Core Guidelines
 https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md 
 
 
+### 隐藏-覆盖-动态绑定
 
+
+只要基类在定义成员函数时已经声明了virtual关键字，在派生类实现的时候覆盖该函数时，virtual关键字可加可不加，不影响多态的实现。
+容易与隐藏混淆：
+隐藏是指派生类的函数屏蔽了与其同名的基类函数，规则如下：
+ 
+1) 如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏（注意别与重载混淆）。
+ 
+2) 如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏（注意别与覆盖混淆）。
+
+To trigger dynamic binding, two conditions must be met:
+First, only member functions that are specified as a virtual can be dynamically bound. 
+By default, member functions are not virtual; non-virtual functions are not dynamically bound.
+Second, the call must be made through a reference or a pointer to a base-class type[没必要是derived type，那就不需要动态绑定喽].
 
 
 
 ## python
+
+
+
 
 ### 帖子
 
@@ -150,6 +178,23 @@ http://andylin02.iteye.com/blog/933237
 http://blog.csdn.net/csdn_duomaomao/article/details/78910588
 三. 使用云函数快速嵌入图片类型识别功能
 base64和json都用到啦
+
+#### 帖子3
+Useful Python Functions and Features You Need to Know
+<http://www.oschina.net/translate/python-functions?cmp>
+
+
+####
+为什么有人说 Python 的多线程是鸡肋呢？ - 知乎
+<https://www.zhihu.com/question/23474039>
+
+- multiprocessing库，这个库是基于multi process实现了类multi thread的API接口，并且用pickle部分地实现了变量共享。
+
+
+
+
+
+
 
 # shell
 全部放在： 

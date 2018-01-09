@@ -102,6 +102,11 @@ http://blog.csdn.net/youfuchen/article/details/29782191
 	
 
 
+### accept
+
+- 惊群问题
+	- linux 惊群问题 - CSDN博客
+<http://blog.csdn.net/liujiyong7/article/details/43346829>
 
 
 ### PF_UNIX
@@ -479,6 +484,13 @@ struct mount的成员
 函数__attach_mnt(mount* , )
 
 
+
+# device-driver
+
+Memory-mapped I/O - Wikipedia
+<https://en.wikipedia.org/wiki/Memory-mapped_I/O>
+
+Memory-mapped I/O (not to be confused with memory-mapped file I/O) uses the same address space to address both memory and I/O devices.
 
 
 

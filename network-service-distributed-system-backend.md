@@ -22,8 +22,41 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 
 动态数据也要缓存，不用查数据库
 
+# 万维网-互联网
+
+百度百科万维网
+<http://baike.baidu.com/link?url=JJpWdlmiF42ac28C3VEWe_UA9pSEap3t3bHKsJLeN76DnBzY1HN6FOsK5RctR809lwZXMQKWup71xuJu8Jzp2DvwkxbxSekNaSN7lSjAcOa>
+
+万维网并不等同互联网，万维网只是互联网所能提供的服务其中之一，是靠着互联网运行的一项服务。其他服务比如电子邮件、ftp等
+
+
+## URL
+
+- 为什么，有的URL中要求有WWW而有的却不需要呀::
+通俗的说，domain.com 是一级域名，而在这之前的任何名称，比如 anything.domain.com 都是二级域名。因此实际上，www.domain.com 是域名 domain.com 的一个二级域名，只不过是一个比较特殊的二级域名罢了。他的特殊就在于现在的实践中，人们在解析域名的的时候，在惯例和默认的情况下，是把 www.domain.com 这个二级域名指向它的一级域名 domain.com。因此，现在的情况时，domain.com 和 www.domain.com，都是一样的，有和没有 www 一般没有关系。
+但是如果在解析域名的时候，没有做这样的设定，也可能就会有区别。
+
+
+
+
+
+
+
 # 七层协议
 <https://github.com/wzcprince/blog2017/blob/master/network-protocols.md#应用层-七层协议>
+
+## https
+
+- HTTPS及HTTPS中间人攻击 - 51CTO.COM
+<http://netsecurity.51cto.com/art/201702/531356.htm>
+	- 2017年6月14日 读后总结，关键字： 
+非对称加密，客户端发起请求，服务器端返回公钥给客户端
+客户端生成对称加密用的随机值，并用公钥加密后返回给服务器
+服务器拿私钥解密得到对称加密用的随机值，
+以后的请求响应都用此随机值进行对称加密解密
+
+
+
 
 
 
@@ -410,6 +443,10 @@ JSON 文本格式在语法上与创建 JavaScript 对象的代码相同。
 
 ## protobuf
 
+
+
+
+
 ## 日订单峰值破40万！58速运订单调度系统架构大解密
 <https://mp.weixin.qq.com/s?src=11&timestamp=1515374663&ver=623&signature=6KGHQcsBueu2NzlzyECSoYhesFRZfXbadjzMsGmgu5o*F-QxVtOG7TvrjXTa1C38fipJ39ipJdi0LgsJKD*8x8*duvnzlg9HHCISJrhMzlm2TBk8JB8amJPWuYqw9tuw&new=1>
 
@@ -417,5 +454,8 @@ JSON 文本格式在语法上与创建 JavaScript 对象的代码相同。
 - 有提到分库分表的技巧
 - 有提到消息追踪系统，也叫调用跟踪系统
 
+
+## 大型网站系统架构的演化 - 飘扬的红领巾 - 博客园
+<http://www.cnblogs.com/leefreeman/p/3993449.html>
 
 

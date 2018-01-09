@@ -101,6 +101,14 @@ EOT
 
 # app
 
+## sudo
+
+Linux系统管理员不可不知的命令：sudo - 51CTO.COM
+<http://os.51cto.com/art/201307/404879.htm>
+
+- sudo -b会在后台运行命令。这对显示许多实时输出内容的命令来说很有用。
+- sudo -s 会运行以提升权限指定的外壳，为你提供#提示符（别忘了退出！）
+- sudo su -会让你成为根用户，并装入你那些自定义的用户环境变量。
 
 ## iptables
 
@@ -111,8 +119,10 @@ EOT
 ## iproute2 
 
 
+## gcc
 
-
+ gcc -g -std=c99 -lpthread multithread.c   
+编译c++需要 -lstdc++
 
 
 
