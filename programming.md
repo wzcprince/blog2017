@@ -138,9 +138,12 @@ C语言中结构体赋值的讨论  http://blog.csdn.net/hazir/article/details/9
 
 
 ## C++
+
 C++ Core Guidelines
 https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md 
 
+Google C++ Style Guide
+<https://google.github.io/styleguide/cppguide.html>
 
 ### 隐藏-覆盖-动态绑定
 

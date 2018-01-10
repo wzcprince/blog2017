@@ -107,7 +107,9 @@ http://blog.csdn.net/youfuchen/article/details/29782191
 - 惊群问题
 	- linux 惊群问题 - CSDN博客
 <http://blog.csdn.net/liujiyong7/article/details/43346829>
-
+	- “惊群”，看看nginx是怎么解决它的 - CSDN博客
+<http://blog.csdn.net/russell_tao/article/details/7204260>
+解决个毛线了呀，所有worker还是都会返回，然后去抢锁！
 
 ### PF_UNIX
 
