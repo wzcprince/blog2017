@@ -3,6 +3,16 @@
 
 # 用户态
 ## VFS Interface【至关重要】
+
+2017年11月29日 VFS到底起了哪些关键作用呢？
+统一的API
+统一的树形组织的路径
+整合物理内存和block device，swap分区，实现虚拟内存，多进程共享内存，
+
+linux内核
+12.1.1 The Common File Model
+13.2 The device driver model
+
 ### VFS是极为重要的接口，不要老想着那一坨API
 
 还有这三个device file呢：！
@@ -39,6 +49,16 @@ POSIX 信号量可以用memory mapped file＋pthread mutex＋ pthread condition 
 
 
 ## socket API
+
+内核tcp/ip协议栈
+socket是分family的，不要只想着 INET即tcp/ip协议栈
+
+- PF_INET
+- PF_UNIX
+- PF_NETLINK
+- PF_PACKET  
+
+
 ### PF_INET
 
 #### raw socket直接操作IP层级的报文
@@ -565,6 +585,34 @@ RPS（Receive Packet Steering）主要是把软中断的负载均衡到各个cpu
 由于RPS只是单纯把数据包均衡到不同的cpu，这个时候如果应用程序所在的cpu和软中断处理的cpu不是同一个，此时对于cpu cache的影响会很大，那么RFS（Receive flow steering）确保应用程序处理的cpu跟软中断处理的cpu是同一个，这样就充分利用cpu的cache，这两个补丁往往都是一起设置，来达到最好的优化效果, 主要是针对单队列网卡多CPU环境。
 
 
+
+
+### Receive packet steering
+https://lwn.net/Articles/362339/ 
+想到 DPDK 17. Elastic Flow Distributor Library 中提到的，
+流分配的三种方式基于计算的和基于流表的
+intention 动机 目的 目标 ：  水平扩展 并行化 负载分担、水平扩展 破除瓶颈单个CPU
+【主要针对单队列网卡】
+In recent years, CPU speeds have stopped increasing, but the number of CPU cores is growing. 。。。the system must also be able to distribute the work across multiple processors.  
+
+。。。distributing the work of outgoing data across CPUs is relatively straightforward. 
+...Others, though, are equipped with a single queue, meaning that the driver for that hardware must deal with all incoming packets in a single, serialized stream. Parallelizing such a stream requires some intelligence on the part of the host operating system.
+
+。。。To take advantage of this capability, the RPS patch adds a new rxhash field to the sk_buff (SKB) structure. Drivers which are able to obtain hash values from the hardware can place them in the SKB; the network stack will then skip the calculation of its own hash value. 
+
+++++++++++++++++++
+https://lwn.net/Articles/361440/
+Problem statement: Protocol processing done in the NAPI context for received packets is serialized per device queue and becomes a bottleneck under high packet load. Â This substantially limits pps that can be achieved on a single queue NIC and provides no scaling with multiple cores. This solution queues packets early on in the receive path on the backlog queues of other CPUs.
+
+The CPU masks is set on a per device basis in the sysfs variable
+/sys/class/net/<device>/rps_cpus.
+
+
+多队列网卡及网卡中断绑定阐述
+http://www.ywnds.com/?p=4380
+
+
+
 ### GRO
 在 napi\_struct对象中，有一个 GRO 的包的列表 gro\_list，用保存收到的包，然后传递给网络协议层，
 比较复杂，以 inet_gro_receive 处理IP报文的合并为例，
@@ -641,6 +689,8 @@ http://m.blog.csdn.net/jianchaolv/article/details/25777249
 
 
 ## packet_mmap接口/机制
+
+<https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt>  
 
 参见 https://blog.cloudflare.com/kernel-bypass/
 重要观点：

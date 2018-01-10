@@ -9,6 +9,19 @@ network-implementation
 
 #### protocols
 
+##### IP
+
+
+IPv4里好多令人鄙视的特性，就不要再死抠那些细节啦
+和IPv6做比较！！！！
+【IP，滴水穿石，基石】IPv6简单走两步 · 第一回 IPv6基础-路由器-华为企业互动社区
+<http://support.huawei.com/huaweiconnect/enterprise/thread-411241.html>
+
+- 取消广播的概念！！！
+- 分片只在起始发送端做，中间的路由节点不再分片！！！
+
+
+
 ##### TCP
 
 - Google TCP fast open
