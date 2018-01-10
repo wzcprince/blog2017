@@ -4,7 +4,7 @@
 Pragmatic Thinking and learning
 [præg'mætɪk] adj. 实际的；实用主义的；务实的
 
-![](http://p14ws25od.bkt.clouddn.com/201801101708_207.png)
+![test](http://p14ws25od.bkt.clouddn.com/201801101708_207.png)
 
 
 
