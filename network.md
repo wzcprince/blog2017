@@ -35,6 +35,8 @@ V8的FES是控制平面和数据平面的接口
 
 
 ### Operator-Network 
+运营商网络架构 商用网络 | 分享自为知笔记
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc2ROn6N0UdAdG2qA81-1A3dvd>
 
 ### Data-Center-Network
 
@@ -43,6 +45,12 @@ V8的FES是控制平面和数据平面的接口
 
 
 ### SDN
+
+
+
+
+
+
 
 
 
