@@ -6,4 +6,5 @@ Pragmatic Thinking and learning
 
 ![](http://p14ws25od.bkt.clouddn.com/201801101708_207.png)
 
-<img src="http://p14ws25od.bkt.clouddn.com/201801101708_207.png"  height="330" width="495">
+
+
