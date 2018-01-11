@@ -132,9 +132,9 @@ https://liangshuang.name/2017/11/16/keepalived/
 
 - HTTP/2 简介
 	-  <https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn>
-	- 分帧层 Introduction to HTTP/2 
+	- 分帧层 binary_framing_layer Introduction to HTTP/2 
 		- <https://developers.google.com/web/fundamentals/performance/http2/?hl=en#binary_framing_layer>
-	- 数据流-消息和帧
+	- 数据流-消息和帧 (#test-anchor)
 		- <https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_3>
 		- 一条TCP连接
 			- 所有通信都在一个 TCP 连接上完成，此连接可以承载任意数量的双向数据流。
