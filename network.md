@@ -1,48 +1,29 @@
 
 
-# network-implementation
+涉及众多知识，先在summary里分一下类吧，
+# network-summary
 
-## single-device-viewpoint
+## network-implementation-single-device-viewpoint
 network-implementation
 
 ### control-plane
 
-#### protocols
-
-##### IP
-
-
-IPv4里好多令人鄙视的特性，就不要再死抠那些细节啦
-和IPv6做比较！！！！
-【IP，滴水穿石，基石】IPv6简单走两步 · 第一回 IPv6基础-路由器-华为企业互动社区
-<http://support.huawei.com/huaweiconnect/enterprise/thread-411241.html>
-
-- 取消广播的概念！！！
-- 分片只在起始发送端做，中间的路由节点不再分片！！！
-
-
-
-##### TCP
-
-- Google TCP fast open
-https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/37517.pdf
-
 ### data-plane
 
-#### V8
+### V8
 V8的FES是控制平面和数据平面的接口
 
-#### dpdk
+### dpdk
+
+
 
 ### management-plane
-
 
 
 ### NFV
 
 
-
-## network-inter-device-viewpoint
+## network-implementation-inter-device-viewpoint
 从一个网络视角或者说网络内设备间视角来看
 注意 这里的网络是比较宽泛的，可能是一个互联网络，可以是一个AS自治域
 
@@ -60,16 +41,21 @@ V8的FES是控制平面和数据平面的接口
 ### SDN
 
 
-
-
-
-
-
-
-
-
-# network-service
+## network-service
 聚焦应用层，聚焦网络提供的服务
+
+
+
+
+
+
+
+----------
+
+----------
+
+----------
+
 
 
 
@@ -108,11 +94,17 @@ http://support.huawei.com/huaweiconnect/enterprise/thread-161157.html
 二层交换，交换机的MAC表只有本network的主机的二层MAC地址，
 
 
-# 二层
+
+
+
+
+
+
+# layer2-protocols
 
 # 2.5层 MPLS
 
-# 三层
+# layer3-protocols
 ## VRRP
 也叫浮动路由
 IP协议号 112
@@ -120,5 +112,18 @@ Keepalived与VRRP协议 | 千里
 https://liangshuang.name/2017/11/16/keepalived/
 
 
-# 应用层-七层协议
+# layer7-protocols
+
+## http
+
+### http-pipeline
+
+- HTTP管线化 <https://zh.wikipedia.org/wiki/HTTP管線化>
+- 可能将多个 HTTP 请求填充在一个TCP数据包内，HTTP 管线化需要在网络上传输较少的 TCP 数据包，减少了网络负载
+- 依赖条件
+	- 通过永久连接（persistent connection）完成
+	- 非幂等的方法，例如POST将不会被管线化
+	- 连续的 GET 和 HEAD 请求总可以管线化的。
+	- 一个连续的幂等请求，如 GET，HEAD，PUT，DELETE，是否可以被管线化取决于一连串请求是否依赖于其他的。
+
 
