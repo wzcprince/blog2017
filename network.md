@@ -116,6 +116,49 @@ https://liangshuang.name/2017/11/16/keepalived/
 
 ## http
 
+### GoogleSPDY对HTTP1.1的主要改进
+参见HTTP/2 <https://zh.wikipedia.org/wiki/HTTP/2#HTTP/1.1与SPDY的区别>
+
+- 实现无需先入先出的多路复用
+- 为简化客户端和服务器开发的消息—帧机制
+- 强制性压缩（包括HTTP头部）
+- 优先级排序
+- 双向通讯
+
+### http/2
+基于GoogleSPDY
+
+- HTTP/2 <https://zh.wikipedia.org/wiki/HTTP/2#协议的制定>
+
+- HTTP/2 简介
+	-  <https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn>
+	- 分帧层 Introduction to HTTP/2 
+		- <https://developers.google.com/web/fundamentals/performance/http2/?hl=en#binary_framing_layer>
+	- 数据流-消息和帧
+		- <https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_3>
+		- 一条TCP连接
+			- 所有通信都在一个 TCP 连接上完成，此连接可以承载任意数量的双向数据流。
+		- 数据流
+			- 已建立的连接内的双向字节流，可以承载一条或多条消息。
+			- 每个数据流都有一个唯一的标识符和可选的优先级，用于承载双向消息。
+		- 消息
+			- 与逻辑请求或响应消息对应的完整的一系列帧
+			- 每条消息都是一条逻辑 HTTP 消息（例如请求或响应），包含一个或多个帧
+		- 帧
+			- 帧：HTTP/2 通信的最小单位，每个帧都包含帧头，至少也会标识出当前帧所属的数据流 
+			- 帧是最小的通信单位，承载着特定类型的数据，例如 HTTP 标头、消息负载，等等。 来自不同数据流的帧可以交错发送，然后再根据每个帧头的数据流标识符重新组装。
+	- 客户端和服务器可以将 HTTP 消息分解为互不依赖的帧，然后交错发送，最后再在另一端把它们重新组装起来。<https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_4>
+	- 【自己的大白话】 一个TCP链接上可以发送若干个帧，这些帧可以属于不同的数据流，消息为数据流划定了边界
+
+
+- RFC 7540 - Hypertext Transfer Protocol Version 2 (HTTP/2) <https://tools.ietf.org/html/rfc7540>
+
+- HTTP: Brief History of HTTP - High Performance Browser Networking (O'Reilly) <https://hpbn.co/brief-history-of-http/>
+
+#### http2争议
+HTTP/2 <https://zh.wikipedia.org/wiki/HTTP/2#针对协议开发本身>
+- 违背了互联网协议的分层原则[28]，例如说，将本属于TCP传输层的流控制(flow control)功能放入了协议中。
+
 ### http-pipeline
 
 - HTTP管线化 <https://zh.wikipedia.org/wiki/HTTP管線化>
