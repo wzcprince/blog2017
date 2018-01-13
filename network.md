@@ -158,7 +158,11 @@ asdfsadf{#test-anchor}
 		- 帧：HTTP/2 通信的最小单位，每个帧都包含帧头，至少也会标识出当前帧所属的数据流 
 		- 帧是最小的通信单位，承载着特定类型的数据，例如 HTTP 标头、消息负载，等等。 来自不同数据流的帧可以交错发送，然后再根据每个帧头的数据流标识符重新组装。
 - 客户端和服务器可以将 HTTP 消息分解为互不依赖的帧，然后交错发送，最后再在另一端把它们重新组装起来。<https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_4>
-- 【自己的大白话】 一个TCP链接上可以发送若干个帧，这些帧可以属于不同的数据流，消息为数据流划定了边界
+- 【自己的大白话】 
+	- http的请求响应消息会被分割打包为若干个二进制帧
+	- 一个TCP链接被划分为若干个逻辑数据流
+	- 帧会指定逻辑数据流ID，最终还是由TCP链接承载
+
 
 #### http2-binary_framing_layer
 - 分帧层 binary_framing_layer <span id = "binary_framing_layer" />Introduction to HTTP/2 
@@ -167,6 +171,13 @@ asdfsadf{#test-anchor}
 #### http2-数据流优先级
 
 - 参考 <https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_5>
+
+#### http2-流控制
+<https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_7>
+
+#### http2服务器推送
+<https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn#_8>
+
 
 #### http2争议
 HTTP/2 <https://zh.wikipedia.org/wiki/HTTP/2#针对协议开发本身>

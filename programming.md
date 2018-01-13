@@ -129,8 +129,8 @@ ip_finish_output2
 
 
 ### 帖子
-C语言中结构体赋值的讨论  http://blog.csdn.net/hazir/article/details/9429017
-字节序及位域使用 http://blog.csdn.net/wangpeihuixyz/article/details/24433655 
+C语言中结构体赋值的讨论  <http://blog.csdn.net/hazir/article/details/9429017>
+字节序及位域使用 <http://blog.csdn.net/wangpeihuixyz/article/details/24433655> 
 
 
 
@@ -140,7 +140,7 @@ C语言中结构体赋值的讨论  http://blog.csdn.net/hazir/article/details/9
 ## C++
 
 C++ Core Guidelines
-https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md 
+<https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md>
 
 Google C++ Style Guide
 <https://google.github.io/styleguide/cppguide.html>

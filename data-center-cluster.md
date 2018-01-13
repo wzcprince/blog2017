@@ -244,6 +244,9 @@ SDN流量调优技术对整网流量监控并实时调整，实现链路间的�
 
 # 文章、帖子收集
 
+##腾讯DCI上线基于集中控制的SR-TE方案
+<https://mp.weixin.qq.com/s/Z9rz17q4B6jDZEFKlbGFBg>
+
 ## 数据中心SDN技术发展应用之MP-BGP
 <https://mp.weixin.qq.com/s/cKoTi9hJD_QHWhS6d2koVA>
 EVPN Vxlan SDN技术用来构建DataCenter网络 
