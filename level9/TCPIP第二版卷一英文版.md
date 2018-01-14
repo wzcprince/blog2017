@@ -2,7 +2,17 @@
 
 
 
+# ch07 Firewalls and Network Address Translation (NAT)
 
+## 7.2.Firewalls
+
+# ch11 Name Resolution and the Domain Name System (DNS)
+
+## 11.4 DNS Caching
+
+
+
+# ch18 
 ### 18.4.7.Nonces and Salt
 
 - nonce 

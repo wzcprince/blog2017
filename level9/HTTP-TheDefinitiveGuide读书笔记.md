@@ -110,6 +110,9 @@ To help make web site logins easier, HTTP includes **a built-in mechanism to pas
 参见 ch12.1.1
 
 
+nonce的定义
+<https://github.com/wzcprince/blog2017/blob/master/level9/TCPIP第二版卷一英文版.md#1847nonces-and-salt>
+
 
 ### 11.6 Cookies
 
