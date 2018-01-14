@@ -96,3 +96,41 @@ The Telnet utility connects your keyboard to a destination TCP port and connects
 
 
 
+
+
+## ch11 Client Identification and Cookies
+
+
+### 11.4 User Login
+
+ a web server can explicitly ask the user who he is by requiring him to authenticate (log in) with a username and password.
+
+To help make web site logins easier, HTTP includes **a built-in mechanism to pass username information to web sites, using the WWW-Authenticate and Authorization headers**. Once logged in, the browsers **continually send this login information with each request** to the site, so the information is always available
+
+参见 ch12.1.1
+
+
+
+### 11.6 Cookies
+
+
+
+
+#### ch12.1.1 HTTP’s Challenge/Response Authentication Framework
+
+WWW-Authenticate
+
+- 参见 13.4.1 Multiple Challenge
+
+User agents must take special care in parsing the WWW-Authenticate or ProxyAuthenticate header field value if it **contains more than one challenge** or if **more than one WWW-Authenticate header field is provided**, as a challenge may itself contain a comma-separated list of authentication parameters. 
+
+
+- 参见附录C 
+	- used in 401 Unauthorized responses
+
+	The WWW-Authenticate header is used in 401 Unauthorized responses to issue a challenge authentication scheme to the client. Chapter 14 discusses the WWW-Authenticate header and its use in HTTP’s basic challenge/response authentication system.
+
+	Type 			Response header
+	Basic Syntax 	WWW-Authenticate: 1# challenge
+	Example 		WWW-Authenticate: Basic realm="Your Private Travel Profile"
+
