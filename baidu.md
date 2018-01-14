@@ -5,12 +5,11 @@
 - dueros
 - brpc
 - 应用层协议
-	- network-service-distributed-system-backend.md 
-network.md  <https://github.com/wzcprince/blog2017/blob/master/network.md#layer7-protocols>
+	- <https://github.com/wzcprince/blog2017/blob/master/network.md#layer7-protocols>
 
 
 - TCP
-
+	- <https://github.com/wzcprince/blog2017/blob/master/network.md#tcp>
 
 
 

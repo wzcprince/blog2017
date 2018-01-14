@@ -1,5 +1,20 @@
 
 
+# ch02 The Internet Address Architecture
+
+## 2.4 CIDR and Aggregation
+### 2.4.1 Prefixes
+
+### CIDR
+
+- Using CIDR, any address range is not predefined as being part of a class but instead
+requires a mask similar to a subnet mask, sometimes called a CIDR mask
+
+- a scheme similar to VLSM
+	- 与VLSM的区别在于 CIDR masks are not limited to a site but are instead visible to the global routing system. 
+
+- network number 和CIDR mask 的combination就叫做  network prefix 
+	- used for both IPv4 and IPv6 address management
 
 
 # ch07 Firewalls and Network Address Translation (NAT)
