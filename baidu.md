@@ -1,5 +1,19 @@
 
 
+# 提纲挈领
+
+- dueros
+- brpc
+- 应用层协议
+	- network-service-distributed-system-backend.md 
+network.md  <https://github.com/wzcprince/blog2017/blob/master/network.md#layer7-protocols>
+
+
+- TCP
+
+
+
+
 # dueros-overview
 
 - dueros技能开放平台
@@ -141,3 +155,9 @@ brpc/bvar.md at master · brpc/brpc
 - RPC（Remote Procedure Call），即远程过程调用，是一个**分布式系统**间通信的必备技术，本文体系性地介绍了 RPC 包含的核心概念和技术，希望读者读完文章，**一提到 RPC，脑中不是零碎的知识，而是具体的一个脑图般的体系**。本文并不会深入到每一个主题剖析，只做提纲挈领的介绍。
 
 - RPC 最核心要解决的问题就是在分布式系统间，如何执行另外一个地址空间上的函数、方法，就仿佛在本地调用一样
+
+
+
+
+
+

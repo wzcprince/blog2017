@@ -98,18 +98,37 @@ http://support.huawei.com/huaweiconnect/enterprise/thread-161157.html
 
 
 
-
-
 # layer2-protocols
 
 # 2.5层 MPLS
 
 # layer3-protocols
+
+## IP-protocol
 ## VRRP
 也叫浮动路由
 IP协议号 112
 Keepalived与VRRP协议 | 千里
 https://liangshuang.name/2017/11/16/keepalived/
+
+
+
+
+
+
+
+
+
+
+# layer4-protocols
+
+## TCP
+
+## UDP
+
+
+
+
 
 
 # layer7-protocols
@@ -192,5 +211,18 @@ HTTP/2 <https://zh.wikipedia.org/wiki/HTTP/2#针对协议开发本身>
 	- 非幂等的方法，例如POST将不会被管线化
 	- 连续的 GET 和 HEAD 请求总可以管线化的。
 	- 一个连续的幂等请求，如 GET，HEAD，PUT，DELETE，是否可以被管线化取决于一连串请求是否依赖于其他的。
+
+
+
+
+## https
+
+- HTTPS及HTTPS中间人攻击 - 51CTO.COM
+<http://netsecurity.51cto.com/art/201702/531356.htm>
+	- 2017年6月14日 读后总结，关键字： 
+非对称加密，客户端发起请求，服务器端返回公钥给客户端
+客户端生成对称加密用的随机值，并用公钥加密后返回给服务器
+服务器拿私钥解密得到对称加密用的随机值，
+以后的请求响应都用此随机值进行对称加密解密
 
 

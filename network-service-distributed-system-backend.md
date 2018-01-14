@@ -39,27 +39,6 @@ Proactor： epoll + 异步aio所以linux的aio还是要学习的
 
 
 
-
-
-
-# 七层协议
-<https://github.com/wzcprince/blog2017/blob/master/network-protocols.md#应用层-七层协议>
-
-## https
-
-- HTTPS及HTTPS中间人攻击 - 51CTO.COM
-<http://netsecurity.51cto.com/art/201702/531356.htm>
-	- 2017年6月14日 读后总结，关键字： 
-非对称加密，客户端发起请求，服务器端返回公钥给客户端
-客户端生成对称加密用的随机值，并用公钥加密后返回给服务器
-服务器拿私钥解密得到对称加密用的随机值，
-以后的请求响应都用此随机值进行对称加密解密
-
-
-
-
-
-
 # cloud-native
 Cloud-Native | Pivotal
 <https://pivotal.io/cloud-native>
