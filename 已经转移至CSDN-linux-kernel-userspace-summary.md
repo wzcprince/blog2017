@@ -1,6 +1,30 @@
 
 [TOC]
 
+# 一部分还在ULK读后感里，需要融合进来
+ULK 读后感 读书笔记 总结 Understanding Linux Kernel ★
+<http://blog.csdn.net/wzcprince/article/details/79069266>
+
+为知笔记中 ：  
+- Linux Kernel TCP/IP 源代码解析-网络
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc3qWH9t2IpQvs2G22u03Txs52>
+
+
+- linux 性能 优化 ★★ 网络 协议栈
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc3CuZAT3NUArj21cjYP1UPVWj>
+
+- linux 总结 ★ shell 命令行、工具、系统工具、应用程序
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc1HzF-o0BlAhT28-usq2NVv4M>
+
+
+- linux 总结 netfilter iptables Nftables
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc14wWfX1qbAeN2MiBst1b9VHa>
+
+- linux kernel 报文收发 转发流程2
+<http://76ad60e2.wiz03.com/share/s/1SHm3y3dXh7w25-M0z1ZXVvc23NNU70qbAhX2RSEhG1awfts>
+
+
+
 # 用户态
 ## VFS Interface【至关重要】
 
@@ -843,6 +867,23 @@ mutex是哪个线程获取到的就要那个线程释放这个锁
 semaphore可以被任意线程获取或者释放
 
 
+
+### 死锁
+
+为什么直接杀死线程是不好的
+http://blog.csdn.net/markl22222/article/details/33310953  
+除了资源回收的问题之外， 如果一个线程获得锁之后，还没来得及解锁就被咔嚓了，那这个锁就永远不会被解掉了，于是所有依赖这个锁的其它线程都华丽丽的死锁掉了。
+
+
+
+printf语句内部会在输出的时候加锁，而TerminateThread却没有给printf解锁的机会。
+malloc free new delete 都一样会加锁
+
+比如微软的msdn中对TerminateThread的描述：
+TerminateThread is a dangerous function that should only be used in the most extreme cases. You should call TerminateThread only if you know exactly what the target thread is doing, and you control all of the code that the target thread could possibly be running at the time of the termination.
+
+
+
 ### CPU affinity
 #### 线程的CPU affinity 线程绑核
 Linux下的绑核命令——taskset - 时间轨迹
@@ -855,6 +896,18 @@ http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353215.html
 CPU isolation 把某个CPU核从linux scheduler中剔除
 
 #### 中断的CPU affinity
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### 试验
@@ -899,6 +952,11 @@ pmap命令行的结果就是很干净了，内存就都被释放啦
 	
 	printf ("stage 4 main thread end pthread_join and sleep again\n");
 	sleep_second(15); 
+
+
+
+
+
 
 
 #### pthread_create

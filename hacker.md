@@ -1,4 +1,7 @@
 
+当白帽黑客遇到了网络诈骗，他是如何套路并反制骗子的？
+<https://mp.weixin.qq.com/s/FTq1x1ebU_f9ISFYdM1Lhw>
+
 
 绝地求生外挂制作者公布开源代码 或迎神仙大战时代
 <http://esports.ifeng.com/a/20180109/44837339_0.shtml>
