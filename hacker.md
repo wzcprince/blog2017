@@ -1,4 +1,8 @@
 
+AI玩微信跳一跳的正确姿势 --跳一跳Auto-Jump算法详解
+<https://zhuanlan.zhihu.com/p/32636329>
+
+
 当白帽黑客遇到了网络诈骗，他是如何套路并反制骗子的？
 <https://mp.weixin.qq.com/s/FTq1x1ebU_f9ISFYdM1Lhw>
 
