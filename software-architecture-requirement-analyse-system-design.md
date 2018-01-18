@@ -74,6 +74,17 @@ csdn草稿箱里的，标题是【模块 设计】
  
 
 ## 软件架构实践读书笔记总结
+
+### overview
+
+Software architecture - Wikipedia
+<https://en.wikipedia.org/wiki/Software_architecture>
+Architecture_viewpoints的概念真的很重要
+<https://en.wikipedia.org/wiki/Software_architecture#Architecture_viewpoints>
+
+Architectural pattern - Wikipedia
+<https://en.wikipedia.org/wiki/Architectural_pattern>
+
 Software Architecture in Practice, Third Edition
 
 ### software architecture的定义
