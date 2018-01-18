@@ -1,5 +1,9 @@
 
 
+<base target="_self" />
+[test_anchor](#test_anchor)
+<a href = "#test_anchor" target= "_self" >test_anchor_usingHref </a>
+
 # 提纲挈领
 
 - dueros
@@ -11,7 +15,8 @@
 - TCP
 	- <https://github.com/wzcprince/blog2017/blob/master/network.md#tcp>
 
-
+<span id="test_anchor" />
+{#test_anchor1}
 
 # dueros-overview
 
